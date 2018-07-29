@@ -58,3 +58,5 @@ fun main(a: Array<String>) {
 - Might come in handy for scripting and build automation
 
 - Static resource discovery, e.g. webpage crawling, IP address scanning
+
+- Projects freqently need to reference project-local resources

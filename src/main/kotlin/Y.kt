@@ -2,44 +2,23 @@ package main.kotlin
 
 import main.kotlin.Y.*
 
-abstract class Directory<T>
 abstract class File<T>
 
 open class Y private constructor() {
   open class localhost_ {
-    @JvmName("usr")
-    operator fun div(a: usr.Companion) = usr<localhost_>()
-    @JvmName("bin")
-    operator fun div(a: bin.Companion) = bin<localhost_>()
-    @JvmName("etc")
-    operator fun div(a: etc.Companion) = etc<localhost_>()
+    @JvmName("usr") operator fun div(a: usr.Companion) = usr<localhost_>()
+    @JvmName("bin") operator fun div(a: bin.Companion) = bin<localhost_>()
+    @JvmName("etc") operator fun div(a: etc.Companion) = etc<localhost_>()
 
     companion object: localhost_()
   }
 
-  open class bin<T>: Directory<T>() {
-    companion object
-  }
-
-  class sh<T>: File<T>() {
-    companion object
-  }
-
-  open class etc<T>: Directory<T>() {
-    companion object
-  }
-
-  class vim<T>: File<T>() {
-    companion object
-  }
-
-  open class usr<T>: Directory<T>() {
-    companion object
-  }
-
-  open class local<T>: Directory<T>() {
-    companion object
-  }
+  open class bin<T>: File<T>() { companion object }
+  open class sh<T>: File<T>() { companion object }
+  open class etc<T>: File<T>() { companion object }
+  open class vim<T>: File<T>() { companion object }
+  open class usr<T>: File<T>() { companion object }
+  open class local<T>: File<T>() { companion object }
 
   companion object {
     fun uri(path: Any) = println(path)
