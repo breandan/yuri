@@ -40,6 +40,20 @@ fun main(a: Array<String>) {
 ```
 
 
-## Run
+## run
 
 `./gradlew compileKotlin`
+
+## why?
+
+- Because Strings are a pain and most filesystems can be scanned quickly
+
+- To stress test Kotlin's type checker (more on this later)
+
+- Real time automatic code generation is getting much better
+
+- Abusing operator overloading is fun! Learn how a DSL works
+
+- Might come in handy for scripting and build automation
+
+- Static resource discovery, e.g. webpage crawling, IP address scanning
