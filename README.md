@@ -32,6 +32,7 @@ fun main(a: Array<String>) {
 
   //Does not compile!
   Y.uri(localhost_/local)
+  Y.uri(localhost_/bin/vim)
   Y.uri(localhost_/sh)
   Y.uri(localhost_/bin/local)
   Y.uri(localhost_/etc/local)

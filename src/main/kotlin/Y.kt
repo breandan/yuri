@@ -75,7 +75,9 @@ operator fun local<usr<localhost_>>.div(a: bin.Companion) = bin<local<usr<localh
 fun main(a: Array<String>) {
   //Compiles!
   Y.uri(localhost_)
+  Y.uri(localhost_/bin)
   Y.uri(localhost_/bin/sh)
+  Y.uri(localhost_/etc)
   Y.uri(localhost_/etc/vim)
   Y.uri(localhost_/usr)
   Y.uri(localhost_/usr/bin/vim)
