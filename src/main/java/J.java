@@ -1,3 +1,5 @@
+import main.kotlin.Directory;
+
 public class J  {
     public static class localhost<T> extends Directory<T> {
         public static root<localhost> div(root<localhost> a) {

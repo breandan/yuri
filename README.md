@@ -1,6 +1,6 @@
 # yuri
 
-A type-safe URI builder for Kotlin.
+A type-safe URI builder for Kotlin. Work in progress.
 
 ```
 import Y.*
@@ -38,3 +38,8 @@ fun main(a: Array<String>) {
   Y.uri(localhost_/etc/sh)
 }
 ```
+
+
+## Run
+
+`./gradlew compileKotlin`

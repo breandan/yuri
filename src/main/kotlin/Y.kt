@@ -1,4 +1,6 @@
-import Y.*
+package main.kotlin
+
+import main.kotlin.Y.*
 
 abstract class Directory<T> {}
 abstract class File<T> {}
