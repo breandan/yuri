@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     compile(kotlin("stdlib-jdk8"))
+    //TODO: Add project File walker and source code generation
     compile("com.squareup:kotlinpoet:1.0.0-RC1")
 }
 
