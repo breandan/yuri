@@ -80,6 +80,7 @@ open class Y<A> private constructor() {
  */
 
 fun main(a: Array<String>) {
+  //Compiles!
   Y.uri(localhost_)
   Y.uri(localhost_/bin)
   Y.uri(localhost_/bin/sh)

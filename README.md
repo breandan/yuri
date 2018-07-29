@@ -3,6 +3,8 @@
 A type-safe URI builder for Kotlin.
 
 ```
+import Y.*
+
 /**
  * localhost_/
  * ├── bin/
@@ -17,6 +19,7 @@ A type-safe URI builder for Kotlin.
  */
 
 fun main(a: Array<String>) {
+  //Compiles!
   Y.uri(localhost_)
   Y.uri(localhost_/bin)
   Y.uri(localhost_/bin/sh)
