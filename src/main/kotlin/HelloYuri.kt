@@ -47,11 +47,13 @@ fun main(a: Array<String>) {
   G.uri(project_/settings_dot_gradle)
   G.uri(project_/src/main)
   G.uri(project_/src/test/kotlin)
+  G.uri(project_/out/production/classes/main)
 
   /**
   // Does not compile
   G.uri(project_/test)
   G.uri(project_/compileKotlin)
   G.uri(project_/kotlin)
-  */
+  G.uri(project_/production/classes/main)
+   */
 }

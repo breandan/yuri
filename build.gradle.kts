@@ -76,7 +76,6 @@ idea {
 fun generateProjectSources() {
   val walker = File(".").walkTopDown()
   val allFiles = walker
-      .maxDepth(3)
       .filter { !it.path.contains(".git") }
       .filter { !it.path.toCharArray().any { it.isDigit() } }
   val topLevelFiles = walker.maxDepth(1)
