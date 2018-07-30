@@ -28,7 +28,7 @@ fun main(a: Array<String>) {
   Y.uri(localhost_/usr/local)
   Y.uri(localhost_/usr/local/bin)
 
-
+  /**
   //Does not compile!
   Y.uri(localhost_/local)
   Y.uri(localhost_/bin/vim)
@@ -51,4 +51,5 @@ fun main(a: Array<String>) {
   G.uri(project_/test)
   G.uri(project_/compileKotlin)
   G.uri(project_/kotlin)
+  */
 }
