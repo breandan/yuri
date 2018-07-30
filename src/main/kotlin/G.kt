@@ -16,8 +16,6 @@ open class G private constructor() {
 
 @JvmName("settings_dot_gradle") operator fun div(a: settings_dot_gradle.Companion) = settings_dot_gradle<project_>("/")
 
-@JvmName("build") operator fun div(a: build.Companion) = build<project_>("/")
-
 @JvmName("build_dot_gradle_dot_kts") operator fun div(a: build_dot_gradle_dot_kts.Companion) = build_dot_gradle_dot_kts<project_>("/")
 
 @JvmName("_dot_gradle") operator fun div(a: _dot_gradle.Companion) = _dot_gradle<project_>("/")
@@ -27,8 +25,6 @@ open class G private constructor() {
 @JvmName("gradlew_dot_bat") operator fun div(a: gradlew_dot_bat.Companion) = gradlew_dot_bat<project_>("/")
 
 @JvmName("src") operator fun div(a: src.Companion) = src<project_>("/")
-
-@JvmName("_dot_idea") operator fun div(a: _dot_idea.Companion) = _dot_idea<project_>("/")
 
 @JvmName("gradlew") operator fun div(a: gradlew.Companion) = gradlew<project_>("/")
 
@@ -42,79 +38,11 @@ open class _dot_<T>(path: String): GFile<T>(path) { companion object }
 
 open class settings_dot_gradle<T>(path: String): GFile<T>(path) { companion object }
 
-open class build<T>(path: String): GFile<T>(path) { companion object }
-
-open class generated<T>(path: String): GFile<T>(path) { companion object }
-
-open class source<T>(path: String): GFile<T>(path) { companion object }
-
-open class yuri<T>(path: String): GFile<T>(path) { companion object }
-
-open class main<T>(path: String): GFile<T>(path) { companion object }
-
-open class G_dot_kt<T>(path: String): GFile<T>(path) { companion object }
-
-open class classes<T>(path: String): GFile<T>(path) { companion object }
-
-open class java<T>(path: String): GFile<T>(path) { companion object }
-
-open class J_dot_class<T>(path: String): GFile<T>(path) { companion object }
-
-open class kotlin<T>(path: String): GFile<T>(path) { companion object }
-
-open class resources<T>(path: String): GFile<T>(path) { companion object }
-
-open class META_dash_INF<T>(path: String): GFile<T>(path) { companion object }
-
-open class gradle_dash_plugins<T>(path: String): GFile<T>(path) { companion object }
-
-open class co_dot_ndan_dot_yuri_dot_properties<T>(path: String): GFile<T>(path) { companion object }
-
-open class sessions<T>(path: String): GFile<T>(path) { companion object }
-
-open class compileKotlin<T>(path: String): GFile<T>(path) { companion object }
-
-open class format_dash_version_dot_txt<T>(path: String): GFile<T>(path) { companion object }
-
-open class build_dash_history_dot_bin<T>(path: String): GFile<T>(path) { companion object }
-
-open class data_dash_container_dash_format_dash_version_dot_txt<T>(path: String): GFile<T>(path) { companion object }
-
-open class caches_dash_jvm<T>(path: String): GFile<T>(path) { companion object }
-
-open class inputs<T>(path: String): GFile<T>(path) { companion object }
-
-open class jvm<T>(path: String): GFile<T>(path) { companion object }
-
-open class lookups<T>(path: String): GFile<T>(path) { companion object }
-
-open class gradle_dash_format_dash_version_dot_txt<T>(path: String): GFile<T>(path) { companion object }
-
-open class dirty_dash_sources_dot_txt<T>(path: String): GFile<T>(path) { companion object }
-
-open class last_dash_build_dot_bin<T>(path: String): GFile<T>(path) { companion object }
-
-open class tmp<T>(path: String): GFile<T>(path) { companion object }
-
-open class compileJava<T>(path: String): GFile<T>(path) { companion object }
-
-open class pluginDescriptors<T>(path: String): GFile<T>(path) { companion object }
-
 open class build_dot_gradle_dot_kts<T>(path: String): GFile<T>(path) { companion object }
 
 open class _dot_gradle<T>(path: String): GFile<T>(path) { companion object }
 
-open class buildOutputCleanup<T>(path: String): GFile<T>(path) { companion object }
-
-open class outputFiles_dot_bin<T>(path: String): GFile<T>(path) { companion object }
-
-open class cache_dot_properties<T>(path: String): GFile<T>(path) { companion object }
-
-open class buildOutputCleanup_dot_lock<T>(path: String): GFile<T>(path) { companion object }
-
 open class vcsWorkingDirs<T>(path: String): GFile<T>(path) { companion object }
-
-open class gc_dot_properties<T>(path: String): GFile<T>(path) { companion object }
 
 open class README_dot_md<T>(path: String): GFile<T>(path) { companion object }
 
@@ -122,9 +50,17 @@ open class gradlew_dot_bat<T>(path: String): GFile<T>(path) { companion object }
 
 open class src<T>(path: String): GFile<T>(path) { companion object }
 
+open class main<T>(path: String): GFile<T>(path) { companion object }
+
+open class java<T>(path: String): GFile<T>(path) { companion object }
+
 open class J_dot_java<T>(path: String): GFile<T>(path) { companion object }
 
+open class kotlin<T>(path: String): GFile<T>(path) { companion object }
+
 open class HelloYuri_dot_kt<T>(path: String): GFile<T>(path) { companion object }
+
+open class G_dot_kt<T>(path: String): GFile<T>(path) { companion object }
 
 open class Y_dot_kt<T>(path: String): GFile<T>(path) { companion object }
 
@@ -132,37 +68,9 @@ open class co<T>(path: String): GFile<T>(path) { companion object }
 
 open class ndan<T>(path: String): GFile<T>(path) { companion object }
 
+open class yuri<T>(path: String): GFile<T>(path) { companion object }
+
 open class Yuri_dot_kt<T>(path: String): GFile<T>(path) { companion object }
-
-open class test<T>(path: String): GFile<T>(path) { companion object }
-
-open class _dot_idea<T>(path: String): GFile<T>(path) { companion object }
-
-open class workspace_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class gradle_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class kotlinc_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class vcs_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class markdown_dash_navigator<T>(path: String): GFile<T>(path) { companion object }
-
-open class profiles_settings_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class markdown_dash_navigator_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class modules<T>(path: String): GFile<T>(path) { companion object }
-
-open class yuri_test_dot_iml<T>(path: String): GFile<T>(path) { companion object }
-
-open class yuri_main_dot_iml<T>(path: String): GFile<T>(path) { companion object }
-
-open class kotlinScripting_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class misc_dot_xml<T>(path: String): GFile<T>(path) { companion object }
-
-open class uiDesigner_dot_xml<T>(path: String): GFile<T>(path) { companion object }
 
 open class gradlew<T>(path: String): GFile<T>(path) { companion object }
 
@@ -178,70 +86,18 @@ open class gradle_dash_wrapper_dot_jar<T>(path: String): GFile<T>(path) { compan
     fun uri(path: Any) = println(path)
   }
 }
-@JvmName("2") operator fun build<project_>.div(a: generated.Companion) = generated<build<project_>>(path)
-@JvmName("3") operator fun generated<build<project_>>.div(a: source.Companion) = source<generated<build<project_>>>(path)
-@JvmName("4") operator fun source<generated<build<project_>>>.div(a: yuri.Companion) = yuri<source<generated<build<project_>>>>(path)
-@JvmName("5") operator fun yuri<source<generated<build<project_>>>>.div(a: main.Companion) = main<yuri<source<generated<build<project_>>>>>(path)
-@JvmName("6") operator fun main<yuri<source<generated<build<project_>>>>>.div(a: G_dot_kt.Companion) = G_dot_kt<main<yuri<source<generated<build<project_>>>>>>(path)
-@JvmName("7") operator fun build<project_>.div(a: classes.Companion) = classes<build<project_>>(path)
-@JvmName("8") operator fun classes<build<project_>>.div(a: java.Companion) = java<classes<build<project_>>>(path)
-@JvmName("9") operator fun java<classes<build<project_>>>.div(a: main.Companion) = main<java<classes<build<project_>>>>(path)
-@JvmName("10") operator fun main<java<classes<build<project_>>>>.div(a: J_dot_class.Companion) = J_dot_class<main<java<classes<build<project_>>>>>(path)
-@JvmName("11") operator fun classes<build<project_>>.div(a: kotlin.Companion) = kotlin<classes<build<project_>>>(path)
-@JvmName("12") operator fun build<project_>.div(a: resources.Companion) = resources<build<project_>>(path)
-@JvmName("13") operator fun resources<build<project_>>.div(a: main.Companion) = main<resources<build<project_>>>(path)
-@JvmName("14") operator fun main<resources<build<project_>>>.div(a: META_dash_INF.Companion) = META_dash_INF<main<resources<build<project_>>>>(path)
-@JvmName("15") operator fun META_dash_INF<main<resources<build<project_>>>>.div(a: gradle_dash_plugins.Companion) = gradle_dash_plugins<META_dash_INF<main<resources<build<project_>>>>>(path)
-@JvmName("16") operator fun gradle_dash_plugins<META_dash_INF<main<resources<build<project_>>>>>.div(a: co_dot_ndan_dot_yuri_dot_properties.Companion) = co_dot_ndan_dot_yuri_dot_properties<gradle_dash_plugins<META_dash_INF<main<resources<build<project_>>>>>>(path)
-@JvmName("17") operator fun build<project_>.div(a: kotlin.Companion) = kotlin<build<project_>>(path)
-@JvmName("18") operator fun kotlin<build<project_>>.div(a: sessions.Companion) = sessions<kotlin<build<project_>>>(path)
-@JvmName("19") operator fun kotlin<build<project_>>.div(a: compileKotlin.Companion) = compileKotlin<kotlin<build<project_>>>(path)
-@JvmName("20") operator fun compileKotlin<kotlin<build<project_>>>.div(a: format_dash_version_dot_txt.Companion) = format_dash_version_dot_txt<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("21") operator fun compileKotlin<kotlin<build<project_>>>.div(a: build_dash_history_dot_bin.Companion) = build_dash_history_dot_bin<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("22") operator fun compileKotlin<kotlin<build<project_>>>.div(a: data_dash_container_dash_format_dash_version_dot_txt.Companion) = data_dash_container_dash_format_dash_version_dot_txt<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("23") operator fun compileKotlin<kotlin<build<project_>>>.div(a: caches_dash_jvm.Companion) = caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("24") operator fun caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>.div(a: inputs.Companion) = inputs<caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>>(path)
-@JvmName("25") operator fun caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>.div(a: jvm.Companion) = jvm<caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>>(path)
-@JvmName("26") operator fun caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>.div(a: lookups.Companion) = lookups<caches_dash_jvm<compileKotlin<kotlin<build<project_>>>>>(path)
-@JvmName("27") operator fun compileKotlin<kotlin<build<project_>>>.div(a: gradle_dash_format_dash_version_dot_txt.Companion) = gradle_dash_format_dash_version_dot_txt<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("28") operator fun compileKotlin<kotlin<build<project_>>>.div(a: dirty_dash_sources_dot_txt.Companion) = dirty_dash_sources_dot_txt<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("29") operator fun compileKotlin<kotlin<build<project_>>>.div(a: last_dash_build_dot_bin.Companion) = last_dash_build_dot_bin<compileKotlin<kotlin<build<project_>>>>(path)
-@JvmName("30") operator fun build<project_>.div(a: tmp.Companion) = tmp<build<project_>>(path)
-@JvmName("31") operator fun tmp<build<project_>>.div(a: compileJava.Companion) = compileJava<tmp<build<project_>>>(path)
-@JvmName("32") operator fun build<project_>.div(a: pluginDescriptors.Companion) = pluginDescriptors<build<project_>>(path)
-@JvmName("33") operator fun pluginDescriptors<build<project_>>.div(a: co_dot_ndan_dot_yuri_dot_properties.Companion) = co_dot_ndan_dot_yuri_dot_properties<pluginDescriptors<build<project_>>>(path)
-@JvmName("34") operator fun _dot_gradle<project_>.div(a: buildOutputCleanup.Companion) = buildOutputCleanup<_dot_gradle<project_>>(path)
-@JvmName("35") operator fun buildOutputCleanup<_dot_gradle<project_>>.div(a: outputFiles_dot_bin.Companion) = outputFiles_dot_bin<buildOutputCleanup<_dot_gradle<project_>>>(path)
-@JvmName("36") operator fun buildOutputCleanup<_dot_gradle<project_>>.div(a: cache_dot_properties.Companion) = cache_dot_properties<buildOutputCleanup<_dot_gradle<project_>>>(path)
-@JvmName("37") operator fun buildOutputCleanup<_dot_gradle<project_>>.div(a: buildOutputCleanup_dot_lock.Companion) = buildOutputCleanup_dot_lock<buildOutputCleanup<_dot_gradle<project_>>>(path)
-@JvmName("38") operator fun _dot_gradle<project_>.div(a: vcsWorkingDirs.Companion) = vcsWorkingDirs<_dot_gradle<project_>>(path)
-@JvmName("39") operator fun vcsWorkingDirs<_dot_gradle<project_>>.div(a: gc_dot_properties.Companion) = gc_dot_properties<vcsWorkingDirs<_dot_gradle<project_>>>(path)
-@JvmName("40") operator fun src<project_>.div(a: main.Companion) = main<src<project_>>(path)
-@JvmName("41") operator fun main<src<project_>>.div(a: java.Companion) = java<main<src<project_>>>(path)
-@JvmName("42") operator fun java<main<src<project_>>>.div(a: J_dot_java.Companion) = J_dot_java<java<main<src<project_>>>>(path)
-@JvmName("43") operator fun main<src<project_>>.div(a: kotlin.Companion) = kotlin<main<src<project_>>>(path)
-@JvmName("44") operator fun kotlin<main<src<project_>>>.div(a: HelloYuri_dot_kt.Companion) = HelloYuri_dot_kt<kotlin<main<src<project_>>>>(path)
-@JvmName("45") operator fun kotlin<main<src<project_>>>.div(a: G_dot_kt.Companion) = G_dot_kt<kotlin<main<src<project_>>>>(path)
-@JvmName("46") operator fun kotlin<main<src<project_>>>.div(a: Y_dot_kt.Companion) = Y_dot_kt<kotlin<main<src<project_>>>>(path)
-@JvmName("47") operator fun kotlin<main<src<project_>>>.div(a: co.Companion) = co<kotlin<main<src<project_>>>>(path)
-@JvmName("48") operator fun co<kotlin<main<src<project_>>>>.div(a: ndan.Companion) = ndan<co<kotlin<main<src<project_>>>>>(path)
-@JvmName("49") operator fun ndan<co<kotlin<main<src<project_>>>>>.div(a: yuri.Companion) = yuri<ndan<co<kotlin<main<src<project_>>>>>>(path)
-@JvmName("50") operator fun yuri<ndan<co<kotlin<main<src<project_>>>>>>.div(a: Yuri_dot_kt.Companion) = Yuri_dot_kt<yuri<ndan<co<kotlin<main<src<project_>>>>>>>(path)
-@JvmName("51") operator fun src<project_>.div(a: test.Companion) = test<src<project_>>(path)
-@JvmName("52") operator fun test<src<project_>>.div(a: kotlin.Companion) = kotlin<test<src<project_>>>(path)
-@JvmName("53") operator fun _dot_idea<project_>.div(a: workspace_dot_xml.Companion) = workspace_dot_xml<_dot_idea<project_>>(path)
-@JvmName("54") operator fun _dot_idea<project_>.div(a: gradle_dot_xml.Companion) = gradle_dot_xml<_dot_idea<project_>>(path)
-@JvmName("55") operator fun _dot_idea<project_>.div(a: kotlinc_dot_xml.Companion) = kotlinc_dot_xml<_dot_idea<project_>>(path)
-@JvmName("56") operator fun _dot_idea<project_>.div(a: vcs_dot_xml.Companion) = vcs_dot_xml<_dot_idea<project_>>(path)
-@JvmName("57") operator fun _dot_idea<project_>.div(a: markdown_dash_navigator.Companion) = markdown_dash_navigator<_dot_idea<project_>>(path)
-@JvmName("58") operator fun markdown_dash_navigator<_dot_idea<project_>>.div(a: profiles_settings_dot_xml.Companion) = profiles_settings_dot_xml<markdown_dash_navigator<_dot_idea<project_>>>(path)
-@JvmName("59") operator fun _dot_idea<project_>.div(a: markdown_dash_navigator_dot_xml.Companion) = markdown_dash_navigator_dot_xml<_dot_idea<project_>>(path)
-@JvmName("60") operator fun _dot_idea<project_>.div(a: modules.Companion) = modules<_dot_idea<project_>>(path)
-@JvmName("61") operator fun modules<_dot_idea<project_>>.div(a: yuri_test_dot_iml.Companion) = yuri_test_dot_iml<modules<_dot_idea<project_>>>(path)
-@JvmName("62") operator fun modules<_dot_idea<project_>>.div(a: yuri_main_dot_iml.Companion) = yuri_main_dot_iml<modules<_dot_idea<project_>>>(path)
-@JvmName("63") operator fun _dot_idea<project_>.div(a: kotlinScripting_dot_xml.Companion) = kotlinScripting_dot_xml<_dot_idea<project_>>(path)
-@JvmName("64") operator fun _dot_idea<project_>.div(a: misc_dot_xml.Companion) = misc_dot_xml<_dot_idea<project_>>(path)
-@JvmName("65") operator fun _dot_idea<project_>.div(a: uiDesigner_dot_xml.Companion) = uiDesigner_dot_xml<_dot_idea<project_>>(path)
-@JvmName("66") operator fun gradle<project_>.div(a: wrapper.Companion) = wrapper<gradle<project_>>(path)
-@JvmName("67") operator fun wrapper<gradle<project_>>.div(a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<wrapper<gradle<project_>>>(path)
-@JvmName("68") operator fun wrapper<gradle<project_>>.div(a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<wrapper<gradle<project_>>>(path)
+@JvmName("2") operator fun _dot_gradle<project_>.div(a: vcsWorkingDirs.Companion) = vcsWorkingDirs<_dot_gradle<project_>>(path)
+@JvmName("3") operator fun src<project_>.div(a: main.Companion) = main<src<project_>>(path)
+@JvmName("4") operator fun main<src<project_>>.div(a: java.Companion) = java<main<src<project_>>>(path)
+@JvmName("5") operator fun java<main<src<project_>>>.div(a: J_dot_java.Companion) = J_dot_java<java<main<src<project_>>>>(path)
+@JvmName("6") operator fun main<src<project_>>.div(a: kotlin.Companion) = kotlin<main<src<project_>>>(path)
+@JvmName("7") operator fun kotlin<main<src<project_>>>.div(a: HelloYuri_dot_kt.Companion) = HelloYuri_dot_kt<kotlin<main<src<project_>>>>(path)
+@JvmName("8") operator fun kotlin<main<src<project_>>>.div(a: G_dot_kt.Companion) = G_dot_kt<kotlin<main<src<project_>>>>(path)
+@JvmName("9") operator fun kotlin<main<src<project_>>>.div(a: Y_dot_kt.Companion) = Y_dot_kt<kotlin<main<src<project_>>>>(path)
+@JvmName("10") operator fun kotlin<main<src<project_>>>.div(a: co.Companion) = co<kotlin<main<src<project_>>>>(path)
+@JvmName("11") operator fun co<kotlin<main<src<project_>>>>.div(a: ndan.Companion) = ndan<co<kotlin<main<src<project_>>>>>(path)
+@JvmName("12") operator fun ndan<co<kotlin<main<src<project_>>>>>.div(a: yuri.Companion) = yuri<ndan<co<kotlin<main<src<project_>>>>>>(path)
+@JvmName("13") operator fun yuri<ndan<co<kotlin<main<src<project_>>>>>>.div(a: Yuri_dot_kt.Companion) = Yuri_dot_kt<yuri<ndan<co<kotlin<main<src<project_>>>>>>>(path)
+@JvmName("14") operator fun gradle<project_>.div(a: wrapper.Companion) = wrapper<gradle<project_>>(path)
+@JvmName("15") operator fun wrapper<gradle<project_>>.div(a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<wrapper<gradle<project_>>>(path)
+@JvmName("16") operator fun wrapper<gradle<project_>>.div(a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<wrapper<gradle<project_>>>(path)

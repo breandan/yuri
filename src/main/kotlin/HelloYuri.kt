@@ -46,7 +46,7 @@ fun main(a: Array<String>) {
   G.uri(project_/gradlew)
   G.uri(project_/settings_dot_gradle)
   G.uri(project_/src/main)
-  G.uri(project_/src/test/kotlin)
+  G.uri(project_/src/main/kotlin)
 
   /**
   // Does not compile
