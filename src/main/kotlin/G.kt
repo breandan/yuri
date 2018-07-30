@@ -100,6 +100,12 @@ open class Main_dot_kt<T>: GFile<T>() { companion object }
 
 open class Y_dot_kt<T>: GFile<T>() { companion object }
 
+open class co<T>: GFile<T>() { companion object }
+
+open class ndan<T>: GFile<T>() { companion object }
+
+open class Yuri_dot_kt<T>: GFile<T>() { companion object }
+
 open class test<T>: GFile<T>() { companion object }
 
 open class _dot_idea<T>: GFile<T>() { companion object }
@@ -171,6 +177,10 @@ operator fun main<src<project_>>.div(a: kotlin.Companion) = kotlin<main<src<proj
 operator fun kotlin<main<src<project_>>>.div(a: G_dot_kt.Companion) = G_dot_kt<kotlin<main<src<project_>>>>()
 operator fun kotlin<main<src<project_>>>.div(a: Main_dot_kt.Companion) = Main_dot_kt<kotlin<main<src<project_>>>>()
 operator fun kotlin<main<src<project_>>>.div(a: Y_dot_kt.Companion) = Y_dot_kt<kotlin<main<src<project_>>>>()
+operator fun kotlin<main<src<project_>>>.div(a: co.Companion) = co<kotlin<main<src<project_>>>>()
+operator fun co<kotlin<main<src<project_>>>>.div(a: ndan.Companion) = ndan<co<kotlin<main<src<project_>>>>>()
+operator fun ndan<co<kotlin<main<src<project_>>>>>.div(a: yuri.Companion) = yuri<ndan<co<kotlin<main<src<project_>>>>>>()
+operator fun yuri<ndan<co<kotlin<main<src<project_>>>>>>.div(a: Yuri_dot_kt.Companion) = Yuri_dot_kt<yuri<ndan<co<kotlin<main<src<project_>>>>>>>()
 operator fun src<project_>.div(a: test.Companion) = test<src<project_>>()
 operator fun test<src<project_>>.div(a: kotlin.Companion) = kotlin<test<src<project_>>>()
 operator fun _dot_idea<project_>.div(a: workspace_dot_xml.Companion) = workspace_dot_xml<_dot_idea<project_>>()

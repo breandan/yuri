@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
   kotlin("jvm") version "1.2.51"
   idea apply true
+  id("com.gradle.plugin-publish") version "0.10.0"
+  `java-gradle-plugin`
 }
 
 group = "co.ndan"
@@ -25,6 +27,36 @@ val genSources by tasks.creating(Task::class.java) {
 tasks.withType<KotlinCompile> {
   dependsOn(genSources)
   kotlinOptions.jvmTarget = "1.8"
+}
+
+gradlePlugin {
+  (plugins) {
+    "yuri" {
+      id = "co.ndan.yuri"
+      implementationClass = "co.ndan.yuri.Yuri"
+    }
+  }
+}
+
+pluginBundle {
+  website = "http://www.gradle.org/"
+  vcsUrl = "https://github.com/breandan/yuri"
+
+  description = "A type-safe URI builder for Kotlin."
+
+  (plugins) {
+    "yuri" {
+      displayName = "Yuri"
+      tags = listOf("uri", "type-safe", "codegen", "kotlin")
+      version = "0.1"
+    }
+  }
+
+  mavenCoordinates {
+    groupId = "co.ndan"
+    artifactId = "yuri"
+    version = "0.1"
+  }
 }
 
 // TODO: Figure out why this doesn't work
