@@ -40,6 +40,16 @@ open class settings_dot_gradle<T>: GFile<T>() { companion object }
 
 open class build<T>: GFile<T>() { companion object }
 
+open class generated<T>: GFile<T>() { companion object }
+
+open class source<T>: GFile<T>() { companion object }
+
+open class yuri<T>: GFile<T>() { companion object }
+
+open class main<T>: GFile<T>() { companion object }
+
+open class G_dot_kt<T>: GFile<T>() { companion object }
+
 open class classes<T>: GFile<T>() { companion object }
 
 open class kotlin<T>: GFile<T>() { companion object }
@@ -82,13 +92,9 @@ open class gradlew_dot_bat<T>: GFile<T>() { companion object }
 
 open class src<T>: GFile<T>() { companion object }
 
-open class main<T>: GFile<T>() { companion object }
-
 open class java<T>: GFile<T>() { companion object }
 
 open class J_dot_java<T>: GFile<T>() { companion object }
-
-open class G_dot_kt<T>: GFile<T>() { companion object }
 
 open class Main_dot_kt<T>: GFile<T>() { companion object }
 
@@ -101,6 +107,8 @@ open class _dot_idea<T>: GFile<T>() { companion object }
 open class workspace_dot_xml<T>: GFile<T>() { companion object }
 
 open class gradle_dot_xml<T>: GFile<T>() { companion object }
+
+open class kotlinc_dot_xml<T>: GFile<T>() { companion object }
 
 open class vcs_dot_xml<T>: GFile<T>() { companion object }
 
@@ -115,6 +123,8 @@ open class modules<T>: GFile<T>() { companion object }
 open class yuri_test_dot_iml<T>: GFile<T>() { companion object }
 
 open class yuri_main_dot_iml<T>: GFile<T>() { companion object }
+
+open class kotlinScripting_dot_xml<T>: GFile<T>() { companion object }
 
 open class misc_dot_xml<T>: GFile<T>() { companion object }
 
@@ -132,6 +142,11 @@ open class gradle_dash_wrapper_dot_jar<T>: GFile<T>() { companion object }
     fun uri(path: Any) = println(path)
   }
 }
+operator fun build<project_>.div(a: generated.Companion) = generated<build<project_>>()
+operator fun generated<build<project_>>.div(a: source.Companion) = source<generated<build<project_>>>()
+operator fun source<generated<build<project_>>>.div(a: yuri.Companion) = yuri<source<generated<build<project_>>>>()
+operator fun yuri<source<generated<build<project_>>>>.div(a: main.Companion) = main<yuri<source<generated<build<project_>>>>>()
+operator fun main<yuri<source<generated<build<project_>>>>>.div(a: G_dot_kt.Companion) = G_dot_kt<main<yuri<source<generated<build<project_>>>>>>()
 operator fun build<project_>.div(a: classes.Companion) = classes<build<project_>>()
 operator fun classes<build<project_>>.div(a: kotlin.Companion) = kotlin<classes<build<project_>>>()
 operator fun build<project_>.div(a: kotlin.Companion) = kotlin<build<project_>>()
@@ -160,6 +175,7 @@ operator fun src<project_>.div(a: test.Companion) = test<src<project_>>()
 operator fun test<src<project_>>.div(a: kotlin.Companion) = kotlin<test<src<project_>>>()
 operator fun _dot_idea<project_>.div(a: workspace_dot_xml.Companion) = workspace_dot_xml<_dot_idea<project_>>()
 operator fun _dot_idea<project_>.div(a: gradle_dot_xml.Companion) = gradle_dot_xml<_dot_idea<project_>>()
+operator fun _dot_idea<project_>.div(a: kotlinc_dot_xml.Companion) = kotlinc_dot_xml<_dot_idea<project_>>()
 operator fun _dot_idea<project_>.div(a: vcs_dot_xml.Companion) = vcs_dot_xml<_dot_idea<project_>>()
 operator fun _dot_idea<project_>.div(a: markdown_dash_navigator.Companion) = markdown_dash_navigator<_dot_idea<project_>>()
 operator fun markdown_dash_navigator<_dot_idea<project_>>.div(a: profiles_settings_dot_xml.Companion) = profiles_settings_dot_xml<markdown_dash_navigator<_dot_idea<project_>>>()
@@ -167,6 +183,7 @@ operator fun _dot_idea<project_>.div(a: markdown_dash_navigator_dot_xml.Companio
 operator fun _dot_idea<project_>.div(a: modules.Companion) = modules<_dot_idea<project_>>()
 operator fun modules<_dot_idea<project_>>.div(a: yuri_test_dot_iml.Companion) = yuri_test_dot_iml<modules<_dot_idea<project_>>>()
 operator fun modules<_dot_idea<project_>>.div(a: yuri_main_dot_iml.Companion) = yuri_main_dot_iml<modules<_dot_idea<project_>>>()
+operator fun _dot_idea<project_>.div(a: kotlinScripting_dot_xml.Companion) = kotlinScripting_dot_xml<_dot_idea<project_>>()
 operator fun _dot_idea<project_>.div(a: misc_dot_xml.Companion) = misc_dot_xml<_dot_idea<project_>>()
 operator fun gradle<project_>.div(a: wrapper.Companion) = wrapper<gradle<project_>>()
 operator fun wrapper<gradle<project_>>.div(a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<wrapper<gradle<project_>>>()
