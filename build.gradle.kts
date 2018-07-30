@@ -19,6 +19,23 @@ dependencies {
 }
 
 val genSources by tasks.creating(Task::class.java) {
+  generateProjectSources()
+}
+
+tasks.withType<KotlinCompile> {
+  dependsOn(genSources)
+  kotlinOptions.jvmTarget = "1.8"
+}
+
+// TODO: Figure out why this doesn't work
+idea {
+  module {
+    generatedSourceDirs.add(File("build/generated/source/yuri/main"))
+    sourceDirs.add(File("build/generated/source/yuri/main"))
+  }
+}
+
+fun generateProjectSources() {
   val walker = File(".").walkTopDown()
   val allFiles = walker
       .filter { !it.path.contains(".git") }
@@ -74,18 +91,4 @@ val genSources by tasks.creating(Task::class.java) {
 
   File("build/generated/source/yuri/main/").apply { mkdirs() }
   File("build/generated/source/yuri/main/G.kt").apply { createNewFile() }.writeText(generatedFile)
-}
-
-tasks.withType<KotlinCompile> {
-  dependsOn(genSources)
-  kotlinOptions.jvmTarget = "1.8"
-}
-
-
-// TODO: Figure out why this doesn't work
-idea {
-  module {
-    generatedSourceDirs.add(File("build/generated/source/yuri/main"))
-    sourceDirs.add(File("build/generated/source/yuri/main"))
-  }
 }
