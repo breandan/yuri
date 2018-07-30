@@ -5,7 +5,10 @@ import main.kotlin.Y.*
 @DslMarker
 annotation class Yuri
 
-abstract class File<T>
+abstract class File<T>( path: String ) {
+  open val path: String = "$path/${javaClass.simpleName}"
+  override fun toString() = path
+}
 
 @Yuri
 open class Y private constructor() {
@@ -17,38 +20,12 @@ open class Y private constructor() {
     @Yuri companion object: localhost_()
   }
 
-  @Yuri open class bin<T>( path: String): File<T>() {
-    val path: String = "$path/bin"
-    override fun toString() = path
-
-    @Yuri companion object }
-  @Yuri open class sh<T>( path: String): File<T>() {
-    val path: String = "$path/sh"
-    override fun toString() = path
-
-    @Yuri companion object }
-  @Yuri open class etc<T>( path: String) : File<T>() {
-    val path: String = "$path/etc"
-    override fun toString() = path
-    @Yuri companion object
-
-  }
-  @Yuri open class vim<T>( path: String): File<T>() {
-    val path: String = "$path/vim"
-    override fun toString() = path
-
-    @Yuri companion object }
-  @Yuri open class usr<T>(path: String): File<T>() {
-    val path: String = "$path/usr"
-    override fun toString() = path
-
-    @Yuri companion object }
-  @Yuri open class local<T>(path: String) : File<T>() {
-    val path: String = "$path/local"
-    override fun toString() = path
-
-    @Yuri companion object }
-
+  @Yuri open class bin<T>(path: String): File<T>(path) { @Yuri companion object }
+  @Yuri open class sh<T>(path: String): File<T>(path) { @Yuri companion object }
+  @Yuri open class etc<T>(path: String) : File<T>(path) { @Yuri companion object }
+  @Yuri open class vim<T>(path: String): File<T>(path) { @Yuri companion object }
+  @Yuri open class usr<T>(path: String): File<T>(path) { @Yuri companion object }
+  @Yuri open class local<T>(path: String): File<T>(path) { @Yuri companion object }
   @Yuri companion object { @Yuri fun uri(path: Any) = println(path) }
 }
 

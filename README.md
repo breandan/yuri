@@ -57,7 +57,7 @@ fun main(a: Array<String>) {
 
 ## run
 
-`./gradlew compileKotlin`
+`./gradlew run`
 
 ## why?
 
