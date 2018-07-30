@@ -69,7 +69,7 @@ val genSources by tasks.creating(Copy::class) {
     val secondLevelFileNames = secondLevelFiles
         .map { val elements = it.path
             .replace("-", "_dash_")
-            .replace("./", "")
+            .substring(2)
             .replace(".", "_dot_")
             .split("/")
             .asReversed()
