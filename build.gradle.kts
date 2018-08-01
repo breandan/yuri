@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
 
 plugins {
-  kotlin("jvm") version "1.2.51"
+  kotlin("jvm") version "1.2.60"
   idea apply true
   application
   id("com.gradle.plugin-publish") version "0.10.0"
