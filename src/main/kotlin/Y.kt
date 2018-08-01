@@ -7,12 +7,14 @@ annotation class Yuri
 
 @Yuri
 abstract class Y private constructor(path: String) {
-  @Yuri open class localhost_ {
-    @JvmName("usr") operator fun div(a: usr.Companion) = usr<localhost_>("/")
-    @JvmName("bin") operator fun div(a: bin.Companion) = bin<localhost_>("/")
-    @JvmName("etc") operator fun div(a: etc.Companion) = etc<localhost_>("/")
+  @Yuri open class localhost_ private constructor(val prefix: String): Y(prefix) {
+    @JvmName("usr") operator fun div(a: usr.Companion) = usr<localhost_>(prefix)
+    @JvmName("bin") operator fun div(a: bin.Companion) = bin<localhost_>(prefix)
+    @JvmName("etc") operator fun div(a: etc.Companion) = etc<localhost_>(prefix)
 
-    @Yuri companion object: localhost_()
+    @Yuri companion object: localhost_("/") {
+      override val path = prefix
+    }
   }
 
   @Yuri open class bin<T>(path: String): Y(path) { @Yuri companion object }
