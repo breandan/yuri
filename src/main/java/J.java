@@ -18,6 +18,6 @@ public class J  {
     static final bin bin = new bin();
 
     public static void main(String[] args) {
-        localhost.div(root); // Try to complete: localhost.div(<caret>)
+        localhost.div(root); // Try to complete: localhost.div(<caret>). First suggestion is "args"!
     }
 }
