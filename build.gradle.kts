@@ -78,7 +78,7 @@ fun generateProjectSources() {
   val allFiles = walker
       .maxDepth(3)
       .filter { !it.path.contains(".git") }
-      .filter { !it.path.toCharArray().any { it.isDigit() } }
+      .filter { file -> !file.path.toCharArray().any { it.isDigit() } }
   val topLevelFiles = walker
       .maxDepth(1)
       .filter { !it.path.contains(".git") }
@@ -100,29 +100,29 @@ fun generateProjectSources() {
     import main.kotlin.G.*
     import java.io.File
 
-    abstract class G private constructor(path: String) {
-    open class project_ private constructor(val prefix: String): G(prefix) {""".trimIndent()
+    private const val unused = "UNUSED_PARAMETER"
+
+    abstract class G private constructor(val uri: String) {
+    @Yuri object project_: G("/") {""".trimIndent()
 
   var generatedFile = header
   topLevelFileNames.forEach {
-    generatedFile += "\n@JvmName(\"$it\") operator fun div(a: $it.Companion) = $it<project_>(prefix)\n"
+    generatedFile += "\n@JvmName(\"$it\") operator fun div(@Suppress(unused) a: $it.Companion) = $it<project_>(\"\")\n"
   }
 
   generatedFile += """
-      companion object: project_(File("").absolutePath) {
-        override val path = prefix
-      }
-    }
+    override fun toString() = uri
+  }
   """.trimIndent()
 
   allFileNames.forEach {
-    generatedFile += "\nopen class $it<T>(path: String): G(path) { companion object }\n"
+    generatedFile += "\nopen class $it<T>(uri: String): G(uri) { companion object }\n"
   }
 
-  generatedFile += "internal open val path: String = \"\$path/\${javaClass.simpleName}\"\n  override fun toString() = path\n  companion object {\n    fun uri(path: Any) = println(path)\n}\n}"
+  generatedFile += "override fun toString() = \"\$uri/\${javaClass.simpleName}\"\n companion object {\n    fun uri(g: G) = File(\"\$g\")\n}\n}"
   val dirMap = secondLevelFiles
-      .map {
-        val elements = it.path
+      .map { file ->
+        val elements = file.path
             .replace("-", "_dash_")
             .substring(2)
             .replace(".", "_dot_")
@@ -131,17 +131,16 @@ fun generateProjectSources() {
             .map { if (it in (KEYWORDS + "out")) "`$it`" else it }
             .asReversed()
 
-
         val value = elements.first()
         val key = elements.drop(1).joinToString("<") + "<project_>" + ">".repeat(elements.size - 2)
 
         Pair(key, value)
       }
 
-  var randomString  = 1
+  var jvmName = 1
   dirMap.forEach {
-    randomString++
-    generatedFile += "@JvmName(\"$randomString\") operator fun <S: ${it.first}> S.div(a: ${it.second}.Companion) = ${it.second}<S>(path)\n"
+    jvmName++
+    generatedFile += "@JvmName(\"$jvmName\") operator fun <S: ${it.first}> S.div(@Suppress(unused) a: ${it.second}.Companion) = ${it.second}<S>(\"\$this\")\n"
   }
 
   File("src/main/kotlin/G.kt").apply { this.createNewFile() }.writeText(generatedFile)
@@ -149,13 +148,3 @@ fun generateProjectSources() {
   File("build/generated/source/yuri/main/").apply { mkdirs() }
   File("build/generated/source/yuri/main/G.kt").apply { createNewFile() }.writeText(generatedFile)
 }
-
-//@JvmName("1")
-//fun generateRandomString(): String {
-//  val chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-//  var randomString = ""
-//  for (i in 0..10) {
-//    randomString += chars[Math.floor(Math.random() * chars.length).toInt()]
-//  }
-//  return randomString
-//}
