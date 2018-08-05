@@ -18,9 +18,6 @@ open class G(val uri: String = "/") {
         @JvmName("yuri_dot_iml")
         operator fun div(@Suppress(unused) a: yuri_dot_iml.Companion) = yuri_dot_iml<project>("")
 
-        @JvmName("out")
-        operator fun div(@Suppress(unused) a: out.Companion) = out<project>("")
-
         @JvmName("settings_dot_gradle")
         operator fun div(@Suppress(unused) a: settings_dot_gradle.Companion) = settings_dot_gradle<project>("")
 
@@ -62,23 +59,15 @@ open class G(val uri: String = "/") {
         companion object
     }
 
-    open class out<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class production<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class classes<T>(uri: String) : G(uri) {
-        companion object
-    }
-
     open class settings_dot_gradle<T>(uri: String) : G(uri) {
         companion object
     }
 
     open class build<T>(uri: String) : G(uri) {
+        companion object
+    }
+
+    open class classes<T>(uri: String) : G(uri) {
         companion object
     }
 
@@ -146,14 +135,6 @@ open class G(val uri: String = "/") {
         companion object
     }
 
-    open class workspace_dash_id_dot_txt_dot_lock<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class workspace_dash_id_dot_txt<T>(uri: String) : G(uri) {
-        companion object
-    }
-
     open class vcsWorkingDirs<T>(uri: String) : G(uri) {
         companion object
     }
@@ -178,10 +159,6 @@ open class G(val uri: String = "/") {
         companion object
     }
 
-    open class modules_dot_xml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
     open class workspace_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
@@ -190,39 +167,11 @@ open class G(val uri: String = "/") {
         companion object
     }
 
-    open class compiler_dot_xml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class vcs_dot_xml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
     open class markdown_dash_navigator<T>(uri: String) : G(uri) {
         companion object
     }
 
     open class profiles_settings_dot_xml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class markdown_dash_navigator_dot_xml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class modules<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class yuri_test_dot_iml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class yuri_main_dot_iml<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    open class libraries<T>(uri: String) : G(uri) {
         companion object
     }
 
@@ -256,124 +205,88 @@ open class G(val uri: String = "/") {
 }
 
 @JvmName("0")
-operator fun <S : `out`<project>> S.div(@Suppress(unused) a: production.Companion) = production<S>("$this")
-
-@JvmName("1")
-operator fun <S : production<`out`<project>>> S.div(@Suppress(unused) a: classes.Companion) = classes<S>("$this")
-
-@JvmName("2")
 operator fun <S : build<project>> S.div(@Suppress(unused) a: classes.Companion) = classes<S>("$this")
 
-@JvmName("3")
+@JvmName("1")
 operator fun <S : classes<build<project>>> S.div(@Suppress(unused) a: java.Companion) = java<S>("$this")
 
-@JvmName("4")
+@JvmName("2")
 operator fun <S : classes<build<project>>> S.div(@Suppress(unused) a: kotlin.Companion) = kotlin<S>("$this")
 
-@JvmName("5")
+@JvmName("3")
 operator fun <S : build<project>> S.div(@Suppress(unused) a: resources.Companion) = resources<S>("$this")
 
-@JvmName("6")
+@JvmName("4")
 operator fun <S : resources<build<project>>> S.div(@Suppress(unused) a: main.Companion) = main<S>("$this")
 
-@JvmName("7")
+@JvmName("5")
 operator fun <S : build<project>> S.div(@Suppress(unused) a: kotlin.Companion) = kotlin<S>("$this")
 
-@JvmName("8")
+@JvmName("6")
 operator fun <S : kotlin<build<project>>> S.div(@Suppress(unused) a: sessions.Companion) = sessions<S>("$this")
 
-@JvmName("9")
+@JvmName("7")
 operator fun <S : kotlin<build<project>>> S.div(@Suppress(unused) a: compileKotlin.Companion) = compileKotlin<S>("$this")
 
-@JvmName("10")
+@JvmName("8")
 operator fun <S : build<project>> S.div(@Suppress(unused) a: tmp.Companion) = tmp<S>("$this")
 
-@JvmName("11")
+@JvmName("9")
 operator fun <S : tmp<build<project>>> S.div(@Suppress(unused) a: compileJava.Companion) = compileJava<S>("$this")
 
-@JvmName("12")
+@JvmName("10")
 operator fun <S : build<project>> S.div(@Suppress(unused) a: pluginDescriptors.Companion) = pluginDescriptors<S>("$this")
 
-@JvmName("13")
+@JvmName("11")
 operator fun <S : pluginDescriptors<build<project>>> S.div(@Suppress(unused) a: co_dot_ndan_dot_yuri_dot_properties.Companion) = co_dot_ndan_dot_yuri_dot_properties<S>("$this")
 
-@JvmName("14")
+@JvmName("12")
 operator fun <S : _dot_gradle<project>> S.div(@Suppress(unused) a: buildOutputCleanup.Companion) = buildOutputCleanup<S>("$this")
 
-@JvmName("15")
+@JvmName("13")
 operator fun <S : buildOutputCleanup<_dot_gradle<project>>> S.div(@Suppress(unused) a: outputFiles_dot_bin.Companion) = outputFiles_dot_bin<S>("$this")
 
-@JvmName("16")
+@JvmName("14")
 operator fun <S : buildOutputCleanup<_dot_gradle<project>>> S.div(@Suppress(unused) a: cache_dot_properties.Companion) = cache_dot_properties<S>("$this")
 
-@JvmName("17")
+@JvmName("15")
 operator fun <S : buildOutputCleanup<_dot_gradle<project>>> S.div(@Suppress(unused) a: buildOutputCleanup_dot_lock.Companion) = buildOutputCleanup_dot_lock<S>("$this")
 
-@JvmName("18")
-operator fun <S : _dot_gradle<project>> S.div(@Suppress(unused) a: workspace_dash_id_dot_txt_dot_lock.Companion) = workspace_dash_id_dot_txt_dot_lock<S>("$this")
-
-@JvmName("19")
-operator fun <S : _dot_gradle<project>> S.div(@Suppress(unused) a: workspace_dash_id_dot_txt.Companion) = workspace_dash_id_dot_txt<S>("$this")
-
-@JvmName("20")
+@JvmName("16")
 operator fun <S : _dot_gradle<project>> S.div(@Suppress(unused) a: vcsWorkingDirs.Companion) = vcsWorkingDirs<S>("$this")
 
-@JvmName("21")
+@JvmName("17")
 operator fun <S : vcsWorkingDirs<_dot_gradle<project>>> S.div(@Suppress(unused) a: gc_dot_properties.Companion) = gc_dot_properties<S>("$this")
 
-@JvmName("22")
+@JvmName("18")
 operator fun <S : src<project>> S.div(@Suppress(unused) a: main.Companion) = main<S>("$this")
 
-@JvmName("23")
+@JvmName("19")
 operator fun <S : main<src<project>>> S.div(@Suppress(unused) a: java.Companion) = java<S>("$this")
 
-@JvmName("24")
+@JvmName("20")
 operator fun <S : main<src<project>>> S.div(@Suppress(unused) a: kotlin.Companion) = kotlin<S>("$this")
 
-@JvmName("25")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: modules_dot_xml.Companion) = modules_dot_xml<S>("$this")
-
-@JvmName("26")
+@JvmName("21")
 operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: workspace_dot_xml.Companion) = workspace_dot_xml<S>("$this")
 
-@JvmName("27")
+@JvmName("22")
 operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: gradle_dot_xml.Companion) = gradle_dot_xml<S>("$this")
 
-@JvmName("28")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: compiler_dot_xml.Companion) = compiler_dot_xml<S>("$this")
-
-@JvmName("29")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: vcs_dot_xml.Companion) = vcs_dot_xml<S>("$this")
-
-@JvmName("30")
+@JvmName("23")
 operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator.Companion) = markdown_dash_navigator<S>("$this")
 
-@JvmName("31")
+@JvmName("24")
 operator fun <S : markdown_dash_navigator<_dot_idea<project>>> S.div(@Suppress(unused) a: profiles_settings_dot_xml.Companion) = profiles_settings_dot_xml<S>("$this")
 
-@JvmName("32")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator_dot_xml.Companion) = markdown_dash_navigator_dot_xml<S>("$this")
-
-@JvmName("33")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: modules.Companion) = modules<S>("$this")
-
-@JvmName("34")
-operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_test_dot_iml.Companion) = yuri_test_dot_iml<S>("$this")
-
-@JvmName("35")
-operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_main_dot_iml.Companion) = yuri_main_dot_iml<S>("$this")
-
-@JvmName("36")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: libraries.Companion) = libraries<S>("$this")
-
-@JvmName("37")
+@JvmName("25")
 operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
 
-@JvmName("38")
+@JvmName("26")
 operator fun <S : gradle<project>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
 
-@JvmName("39")
+@JvmName("27")
 operator fun <S : wrapper<gradle<project>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
 
-@JvmName("40")
+@JvmName("28")
 operator fun <S : wrapper<gradle<project>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<S>("$this")

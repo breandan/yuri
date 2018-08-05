@@ -55,16 +55,16 @@ fun main(a: Array<String>) {
       G.uri(project /src/main/kotlin)
 
       // Does not compile!
-      // ,Y.uri(localhost /local),
-      // ,Y.uri(localhost /bin/vim),
-      // ,Y.uri(localhost /sh),
-      // ,Y.uri(localhost /bin/local),
-      // ,Y.uri(localhost /etc/local),
-      // ,Y.uri(localhost /etc/sh),
-      // ,Y.uri(localhost /usr/local/sh),
-      // ,G.uri(project /test),
-      // ,G.uri(project /compileKotlin),
-      // ,G.uri(project /kotlin),
+      // ,Y.uri(localhost /local)
+      // ,Y.uri(localhost /bin/vim)
+      // ,Y.uri(localhost /sh)
+      // ,Y.uri(localhost /bin/local)
+      // ,Y.uri(localhost /etc/local)
+      // ,Y.uri(localhost /etc/sh)
+      // ,Y.uri(localhost /usr/local/sh)
+      // ,G.uri(project /test)
+      // ,G.uri(project /compileKotlin)
+      // ,G.uri(project /kotlin)
       // ,G.uri(project /production/classes/main)
   ).forEach { println("$it") }
 
