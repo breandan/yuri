@@ -37,7 +37,7 @@ fun main(a: Array<String>) {
 //      Y.uri(localhost /bin/local),
 //      Y.uri(localhost /etc/local),
 //      Y.uri(localhost /etc/sh),
-//      Y.uri(localhost /usr/local/usr),
+//      Y.uri(localhost /usr/local/sh),
 //      G.uri(project /test),
 //      G.uri(project /compileKotlin),
 //      G.uri(project /kotlin),

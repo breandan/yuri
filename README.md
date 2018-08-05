@@ -43,7 +43,7 @@ fun main(a: Array<String>) {
   // Compiles!
   G.uri(project /gradle)
   G.uri(project /gradlew)
-  G.uri(project /settings dot gradle)
+  G.uri(project /settings/gradle)
   G.uri(project /src/main)
 
   // Does not compile
