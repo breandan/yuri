@@ -35,6 +35,8 @@ fun main(a: Array<String>) {
       Y.uri(localhost /usr/local),
       Y.uri(localhost /usr/local/bin),
       Y.uri(localhost /usr/local/bin/sh),
+      
+      G.uri(project),
       G.uri(project /gradle),
       G.uri(project /gradlew),
       G.uri(project /settings_dot_gradle),

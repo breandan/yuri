@@ -145,7 +145,7 @@ fun generateProjectSources() {
                     .addAnnotation(AnnotationSpec.builder(JvmName::class).addMember("\"$it\"").build())
                     .addParameter(ParameterSpec.builder("a", ClassName("", "$it.Companion"))
                         .addAnnotation(suppressAnnotation).build())
-                    .addStatement("return $it<project>(\"\")")
+                    .addStatement("return $it<project>(uri)")
                     .build()
               }.asIterable())
               .addFunction(FunSpec.builder("toString")
