@@ -5,19 +5,6 @@ A type-safe URI builder for Kotlin. Work in progress.
 ```
 import Y.*
 
-/**
- * localhost /
- * ├── bin/
- * │   └── sh
- * ├── etc/
- * │   └── vim
- * └── usr/
- *     ├── bin/
- *     │   └── vim
- *     └── local/
- *         └── bin/
- */
-
 fun main(a: Array<String>) {
   println(""" MOCK FILE TREE:
 
