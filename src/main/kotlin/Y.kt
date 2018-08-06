@@ -34,7 +34,7 @@ abstract class Y private constructor(private vararg val uri: Y) {
   @Yuri open class local<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
 
   @Yuri companion object {
-    private val allPaths = arrayOf<String>(
+    private val allPaths = arrayOf(
         "/bin",
         "/bin/sh",
         "/etc",
