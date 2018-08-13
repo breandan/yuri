@@ -13,7 +13,7 @@ fun main(a: Array<String>) {
   |       └── sh
   ├── etc
   │   ├── vim
-  |   └── test.sh
+  |   └── script.sh
   └── usr
       ├── bin
       │   └── vim
@@ -33,7 +33,7 @@ fun main(a: Array<String>) {
       Y.uri(localhost /bin/sh.distrib/sh),
       Y.uri(localhost /etc),
       Y.uri(localhost /etc/vim),
-      Y.uri(localhost /etc/test.sh),
+      Y.uri(localhost /etc/script.sh),
       Y.uri(localhost /usr),
       Y.uri(localhost /usr/bin/vim),
       Y.uri(localhost /usr/local),
@@ -54,7 +54,7 @@ fun main(a: Array<String>) {
       // ,Y.uri(localhost /bin/local)
       // ,Y.uri(localhost /etc/local)
       // ,Y.uri(localhost /etc/sh)
-      // ,Y.uri(localhost /etc/test)
+      // ,Y.uri(localhost /etc/script)
       // ,Y.uri(localhost /usr/local/sh)
       // ,Y.uri(localhost /usr/local/bin/sh.distrib)
       // ,Y.uri(project /test)

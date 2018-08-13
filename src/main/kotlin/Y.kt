@@ -33,7 +33,7 @@ sealed class Y constructor(private vararg val uri: Y) {
     @Yuri companion object
   }
 
-  @Yuri class test<T>(uri: Array<Y>): Y(*uri) {
+  @Yuri class script<T>(uri: Array<Y>): Y(*uri) {
     class sh<U>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
   }
 
@@ -75,7 +75,7 @@ sealed class Y constructor(private vararg val uri: Y) {
  * |       └── sh
  * ├── etc
  * │   ├── vim
- * |   └── test.sh
+ * |   └── script.sh
  * └── usr
  *     ├── bin
  *     │   └── vim
@@ -96,7 +96,7 @@ sealed class Y constructor(private vararg val uri: Y) {
 // File extension dot operator notation
 @JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a:sh.distrib.Companion) = sh.distrib<S>(path)
 @JvmName("00") operator fun <S: sh.distrib<bin<localhost>>> S.div(@Suppress(unused) a:sh.Companion) = vim<S>(path)
-@JvmName("00") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a:test.sh.Companion) = test.sh<S>(path)
+@JvmName("00") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a:script.sh.Companion) = script.sh<S>(path)
 
 @JvmName("07") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
 @JvmName("08") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
