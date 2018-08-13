@@ -9,7 +9,7 @@ annotation class Yuri
 private const val unused = "UNUSED_PARAMETER"
 
 @Yuri
-abstract class Y private constructor(private vararg val uri: Y) {
+sealed class Y constructor(private vararg val uri: Y) {
   @Yuri object localhost: Y() {
     @JvmName("root_usr") operator fun div(@Suppress(unused) a:usr.Companion) = usr<localhost>(path)
     @JvmName("root_bin") operator fun div(@Suppress(unused) a:bin.Companion) = bin<localhost>(path)
@@ -26,12 +26,12 @@ abstract class Y private constructor(private vararg val uri: Y) {
     override fun toString() = "/"
   }
 
-  @Yuri open class bin<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri open class sh<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri open class etc<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri open class vim<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri open class usr<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri open class local<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class bin<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class sh<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class etc<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class vim<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class usr<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class local<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
 
   @Yuri companion object {
     private val allPaths = arrayOf(

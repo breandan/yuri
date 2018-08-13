@@ -8,7 +8,7 @@ import kotlin.jvm.JvmName
 
 private const val unused: String = "UNUSED_PARAMETER"
 
-open class G(val uri: String = "/") {
+sealed class G(val uri: String = "/") {
     override fun toString() = "$uri/${javaClass.simpleName}"
 
     object project : G("/home/brendan/IdeaProjects/yuri") {
@@ -54,191 +54,195 @@ open class G(val uri: String = "/") {
         override fun toString() = uri
     }
 
-    open class _dot_<T>(uri: String) : G(uri) {
+    class _dot_<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class yuri_dot_iml<T>(uri: String) : G(uri) {
+    class yuri_dot_iml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class out<T>(uri: String) : G(uri) {
+    class out<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class production<T>(uri: String) : G(uri) {
+    class production<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class classes<T>(uri: String) : G(uri) {
+    class classes<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class settings_dot_gradle<T>(uri: String) : G(uri) {
+    class settings_dot_gradle<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class build<T>(uri: String) : G(uri) {
+    class build<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class java<T>(uri: String) : G(uri) {
+    class java<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class kotlin<T>(uri: String) : G(uri) {
+    class kotlin<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class resources<T>(uri: String) : G(uri) {
+    class resources<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class main<T>(uri: String) : G(uri) {
+    class main<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class sessions<T>(uri: String) : G(uri) {
+    class sessions<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class compileKotlin<T>(uri: String) : G(uri) {
+    class compileKotlin<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class tmp<T>(uri: String) : G(uri) {
+    class tmp<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class compileJava<T>(uri: String) : G(uri) {
+    class compileJava<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class pluginDescriptors<T>(uri: String) : G(uri) {
+    class pluginDescriptors<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class co_dot_ndan_dot_yuri_dot_properties<T>(uri: String) : G(uri) {
+    class co_dot_ndan_dot_yuri_dot_properties<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class build_dot_gradle_dot_kts<T>(uri: String) : G(uri) {
+    class build_dot_gradle_dot_kts<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class _dot_gradle<T>(uri: String) : G(uri) {
+    class _dot_gradle<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class buildOutputCleanup<T>(uri: String) : G(uri) {
+    class buildOutputCleanup<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class outputFiles_dot_bin<T>(uri: String) : G(uri) {
+    class outputFiles_dot_bin<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class cache_dot_properties<T>(uri: String) : G(uri) {
+    class cache_dot_properties<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class buildOutputCleanup_dot_lock<T>(uri: String) : G(uri) {
+    class buildOutputCleanup_dot_lock<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class vcsWorkingDirs<T>(uri: String) : G(uri) {
+    class vcsWorkingDirs<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gc_dot_properties<T>(uri: String) : G(uri) {
+    class gc_dot_properties<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class README_dot_md<T>(uri: String) : G(uri) {
+    class README_dot_md<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradlew_dot_bat<T>(uri: String) : G(uri) {
+    class gradlew_dot_bat<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class src<T>(uri: String) : G(uri) {
+    class src<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class _dot_idea<T>(uri: String) : G(uri) {
+    class _dot_idea<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class modules_dot_xml<T>(uri: String) : G(uri) {
+    class modules_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class workspace_dot_xml<T>(uri: String) : G(uri) {
+    class workspace_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradle_dot_xml<T>(uri: String) : G(uri) {
+    class gradle_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class compiler_dot_xml<T>(uri: String) : G(uri) {
+    class markdown_dash_exported_dash_files_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class vcs_dot_xml<T>(uri: String) : G(uri) {
+    class compiler_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class markdown_dash_navigator<T>(uri: String) : G(uri) {
+    class vcs_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class profiles_settings_dot_xml<T>(uri: String) : G(uri) {
+    class markdown_dash_navigator<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class markdown_dash_navigator_dot_xml<T>(uri: String) : G(uri) {
+    class profiles_settings_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class modules<T>(uri: String) : G(uri) {
+    class markdown_dash_navigator_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class yuri_test_dot_iml<T>(uri: String) : G(uri) {
+    class modules<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class yuri_main_dot_iml<T>(uri: String) : G(uri) {
+    class yuri_test_dot_iml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class libraries<T>(uri: String) : G(uri) {
+    class yuri_main_dot_iml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class misc_dot_xml<T>(uri: String) : G(uri) {
+    class libraries<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradlew<T>(uri: String) : G(uri) {
+    class misc_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradle<T>(uri: String) : G(uri) {
+    class gradlew<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class wrapper<T>(uri: String) : G(uri) {
+    class gradle<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradle_dash_wrapper_dot_properties<T>(uri: String) : G(uri) {
+    class wrapper<T>(uri: String) : G(uri) {
         companion object
     }
 
-    open class gradle_dash_wrapper_dot_jar<T>(uri: String) : G(uri) {
+    class gradle_dash_wrapper_dot_properties<T>(uri: String) : G(uri) {
+        companion object
+    }
+
+    class gradle_dash_wrapper_dot_jar<T>(uri: String) : G(uri) {
         companion object
     }
 
@@ -326,40 +330,43 @@ operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: workspace_dot_x
 operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: gradle_dot_xml.Companion) = gradle_dot_xml<S>("$this")
 
 @JvmName("26")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: compiler_dot_xml.Companion) = compiler_dot_xml<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_exported_dash_files_dot_xml.Companion) = markdown_dash_exported_dash_files_dot_xml<S>("$this")
 
 @JvmName("27")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: vcs_dot_xml.Companion) = vcs_dot_xml<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: compiler_dot_xml.Companion) = compiler_dot_xml<S>("$this")
 
 @JvmName("28")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator.Companion) = markdown_dash_navigator<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: vcs_dot_xml.Companion) = vcs_dot_xml<S>("$this")
 
 @JvmName("29")
-operator fun <S : markdown_dash_navigator<_dot_idea<project>>> S.div(@Suppress(unused) a: profiles_settings_dot_xml.Companion) = profiles_settings_dot_xml<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator.Companion) = markdown_dash_navigator<S>("$this")
 
 @JvmName("30")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator_dot_xml.Companion) = markdown_dash_navigator_dot_xml<S>("$this")
+operator fun <S : markdown_dash_navigator<_dot_idea<project>>> S.div(@Suppress(unused) a: profiles_settings_dot_xml.Companion) = profiles_settings_dot_xml<S>("$this")
 
 @JvmName("31")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: modules.Companion) = modules<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: markdown_dash_navigator_dot_xml.Companion) = markdown_dash_navigator_dot_xml<S>("$this")
 
 @JvmName("32")
-operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_test_dot_iml.Companion) = yuri_test_dot_iml<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: modules.Companion) = modules<S>("$this")
 
 @JvmName("33")
-operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_main_dot_iml.Companion) = yuri_main_dot_iml<S>("$this")
+operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_test_dot_iml.Companion) = yuri_test_dot_iml<S>("$this")
 
 @JvmName("34")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: libraries.Companion) = libraries<S>("$this")
+operator fun <S : modules<_dot_idea<project>>> S.div(@Suppress(unused) a: yuri_main_dot_iml.Companion) = yuri_main_dot_iml<S>("$this")
 
 @JvmName("35")
-operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: libraries.Companion) = libraries<S>("$this")
 
 @JvmName("36")
-operator fun <S : gradle<project>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
+operator fun <S : _dot_idea<project>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
 
 @JvmName("37")
-operator fun <S : wrapper<gradle<project>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
+operator fun <S : gradle<project>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
 
 @JvmName("38")
+operator fun <S : wrapper<gradle<project>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
+
+@JvmName("39")
 operator fun <S : wrapper<gradle<project>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<S>("$this")

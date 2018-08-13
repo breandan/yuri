@@ -49,10 +49,10 @@ fun main(a: Array<String>) {
       // ,Y.uri(localhost /etc/local)
       // ,Y.uri(localhost /etc/sh)
       // ,Y.uri(localhost /usr/local/sh)
-      // ,G.uri(project /test)
-      // ,G.uri(project /compileKotlin)
-      // ,G.uri(project /kotlin)
-      // ,G.uri(project /production/classes/main)
+      // ,Y.uri(project /test)
+      // ,Y.uri(project /compileKotlin)
+      // ,Y.uri(project /kotlin)
+      // ,Y.uri(project /production/classes/main)
   ).forEach { println("$it") }
 
   println("\nKLEENE STAR SEARCH:\n")
