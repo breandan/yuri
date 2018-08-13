@@ -10,9 +10,12 @@ fun main(a: Array<String>) {
 
   localhost
   ├── bin
-  │   └── sh
+  │   ├── sh
+  │   └── sh.distrib
+  |       └── sh
   ├── etc
-  │   └── vim
+  │   ├── vim
+  |   └── test.sh
   └── usr
       ├── bin
       │   └── vim
@@ -28,14 +31,17 @@ fun main(a: Array<String>) {
       Y.uri(localhost),
       Y.uri(localhost /bin),
       Y.uri(localhost /bin/sh),
+      Y.uri(localhost /bin/sh.distrib),
+      Y.uri(localhost /bin/sh.distrib/sh),
       Y.uri(localhost /etc),
       Y.uri(localhost /etc/vim),
+      Y.uri(localhost /etc/test.sh),
       Y.uri(localhost /usr),
       Y.uri(localhost /usr/bin/vim),
       Y.uri(localhost /usr/local),
       Y.uri(localhost /usr/local/bin),
       Y.uri(localhost /usr/local/bin/sh),
-      
+
       Y.uri(project),
       Y.uri(project /gradle),
       Y.uri(project /gradlew),
@@ -50,7 +56,9 @@ fun main(a: Array<String>) {
       // ,Y.uri(localhost /bin/local)
       // ,Y.uri(localhost /etc/local)
       // ,Y.uri(localhost /etc/sh)
+      // ,Y.uri(localhost /etc/test)
       // ,Y.uri(localhost /usr/local/sh)
+      // ,Y.uri(localhost /usr/local/bin/sh.distrib)
       // ,Y.uri(project /test)
       // ,Y.uri(project /compileKotlin)
       // ,Y.uri(project /kotlin)

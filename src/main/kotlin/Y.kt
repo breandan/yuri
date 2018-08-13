@@ -27,7 +27,16 @@ sealed class Y constructor(private vararg val uri: Y) {
   }
 
   @Yuri class bin<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri class sh<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri class sh<T>(uri: Array<Y>): Y(*uri) {
+    class distrib<U>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+
+    @Yuri companion object
+  }
+
+  @Yuri class test<T>(uri: Array<Y>): Y(*uri) {
+    class sh<U>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  }
+
   @Yuri class etc<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
   @Yuri class vim<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
   @Yuri class usr<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
@@ -61,9 +70,12 @@ sealed class Y constructor(private vararg val uri: Y) {
 /**
  * localhost
  * ├── bin
- * │   └── sh
+ * │   ├── sh
+ * │   └── sh.distrib
+ * |       └── sh
  * ├── etc
- * │   └── vim
+ * │   ├── vim
+ * |   └── test.sh
  * └── usr
  *     ├── bin
  *     │   └── vim
@@ -80,6 +92,11 @@ sealed class Y constructor(private vararg val uri: Y) {
 @JvmName("04") operator fun <S: usr<localhost>> S.div(@Suppress(unused) a:local.Companion) = local<S>(path)
 @JvmName("05") operator fun <S: local<usr<localhost>>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
 @JvmName("06") operator fun <S: bin<local<usr<localhost>>>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
+
+// File extension dot operator notation
+@JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a:sh.distrib.Companion) = sh.distrib<S>(path)
+@JvmName("00") operator fun <S: sh.distrib<bin<localhost>>> S.div(@Suppress(unused) a:sh.Companion) = vim<S>(path)
+@JvmName("00") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a:test.sh.Companion) = test.sh<S>(path)
 
 @JvmName("07") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
 @JvmName("08") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
