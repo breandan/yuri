@@ -28,13 +28,20 @@ sealed class Y constructor(private vararg val uri: Y) {
 
   @Yuri class bin<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
   @Yuri class sh<T>(uri: Array<Y>): Y(*uri) {
-    class distrib<U>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+    class distrib<U>(uri: Array<Y>): Y(*uri) {
+      override val fileName: String get() = this.javaClass.name.split("\$").drop(1).joinToString(".")
+
+      @Yuri companion object
+    }
 
     @Yuri companion object
   }
 
   @Yuri class script<T>(uri: Array<Y>): Y(*uri) {
-    class sh<U>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+    class sh<U>(uri: Array<Y>): Y(*uri) {
+      override val fileName: String get() = this.javaClass.name.split("\$").drop(1).joinToString(".")
+      @Yuri companion object
+    }
   }
 
   @Yuri class etc<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
@@ -62,7 +69,7 @@ sealed class Y constructor(private vararg val uri: Y) {
   }
 
   open val path: Array<Y> get() = arrayOf(*uri, this)
-  open val fileName: String get() = javaClass.simpleName
+  open val fileName: String get() = this.javaClass.simpleName
 
   override fun toString() = path.joinToString("/") { it.fileName }
 }
