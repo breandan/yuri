@@ -48,6 +48,7 @@ abstract class Y private constructor(private vararg val uri: Y) {
     )
 
     @Yuri fun uri(file: Y) = File("$file")
+    @Yuri fun uri(file: G) = File("$file")
     @Yuri fun uris(y: Y) = allPaths.filter { it.endsWith("$y") }.map { File(it) }
   }
 

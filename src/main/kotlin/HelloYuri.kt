@@ -34,12 +34,12 @@ fun main(a: Array<String>) {
       Y.uri(localhost /usr/local/bin),
       Y.uri(localhost /usr/local/bin/sh),
 
-      G.uri(project),
-      G.uri(project /gradle),
-      G.uri(project /gradlew),
-      G.uri(project /settings_dot_gradle),
-      G.uri(project /src/main),
-      G.uri(project /src/main/kotlin)
+      Y.uri(project),
+      Y.uri(project /gradle),
+      Y.uri(project /gradlew),
+      Y.uri(project /settings_dot_gradle),
+      Y.uri(project /src/main),
+      Y.uri(project /src/main/kotlin)
 
       // Does not compile!
       // ,Y.uri(localhost /local)
