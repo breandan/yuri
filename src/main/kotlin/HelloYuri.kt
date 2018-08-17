@@ -71,13 +71,20 @@ fun main(a: Array<String>) {
       *sh,
       *vim,
       *bin/sh,
+      *bin/sh.distrib,
       *etc/vim,
-      *usr/bin
+      *usr/bin,
+      *sh.distrib,
+      *sh.distrib/sh,
+      *script.sh,
+      *etc/script.sh
 
       // Does not compile!
       // , *etc/bin
       // , *etc/sh
       // , *local/usr
+      // , *sh/distrib
+      // , *sh/sh
   ).forEach { path -> println("*$path -> ${Y.uris(path)}") }
 
   println("\nBATCH OPERATIONS:\n")

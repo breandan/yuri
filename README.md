@@ -79,20 +79,27 @@ listOf(
 You can perform Kleene-star prefix searches using Kotlin's [spread-operator](https://kotlinlang.org/docs/reference/functions.html#variable-number-of-arguments-varargs):
 
 ```kotlin
-listOf(                                       
-    // Compiles!                              
-    *bin,                                     
-    *sh,                                      
-    *vim,                                     
-    *bin/sh,                                  
-    *etc/vim,                                 
-    *usr/bin                                  
-                                              
-    // Does not compile!                      
-    // , *etc/bin                             
-    // , *etc/sh                              
-    // , *local/usr                           
-).forEach { println("*$it -> ${Y.uris(it)}") }
+listOf(
+    // Compiles!
+    *bin,
+    *sh,
+    *vim,
+    *bin/sh,
+    *bin/sh.distrib,
+    *etc/vim,
+    *usr/bin,
+    *sh.distrib,
+    *sh.distrib/sh,
+    *script.sh,
+    *etc/script.sh
+    
+    // Does not compile!
+    // , *etc/bin
+    // , *etc/sh
+    // , *local/usr
+    // , *sh/distrib
+    // , *sh/sh
+).forEach { path -> println("*$path -> ${Y.uris(path)}") }
 ```
 
 ## batch
