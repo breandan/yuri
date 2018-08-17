@@ -25,16 +25,8 @@ sealed class Y constructor(private vararg val uri: Y): File(uri.toString()) {
   @Yuri open class vim<T>(uri: Array<Y>): Y(*uri)
   @Yuri open class usr<T>(uri: Array<Y>): Y(*uri)
   @Yuri open class local<T>(uri: Array<Y>): Y(*uri)
-
-  @Yuri
-  class sh<U>(uri: Array<Y>): Y(*uri) {
-    override val fileName: String get() = this.javaClass.name.split("\$").drop(1).joinToString(".")
-  }
-
-  @Yuri
-  class distrib<U>(uri: Array<Y>): Y(*uri) {
-    override val fileName: String get() = this.javaClass.name.split("\$").drop(1).joinToString(".")
-  }
+  @Yuri class sh<U>(uri: Array<Y>): Y(*uri)
+  @Yuri class distrib<U>(uri: Array<Y>): Y(*uri)
 
   @Yuri companion object {
     private val allPaths = arrayOf(
