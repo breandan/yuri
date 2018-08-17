@@ -9,32 +9,33 @@ annotation class Yuri
 private const val unused = "UNUSED_PARAMETER"
 
 @Yuri
-sealed class Y constructor(private vararg val uri: Y) {
+sealed class Y constructor(private vararg val uri: Y): File(uri.toString()) {
   @Yuri object localhost: Y() {
-    @JvmName("root_usr") operator fun div(@Suppress(unused) a:usr.Companion) = usr<localhost>(path)
-    @JvmName("root_bin") operator fun div(@Suppress(unused) a:bin.Companion) = bin<localhost>(path)
-    @JvmName("root_etc") operator fun div(@Suppress(unused) a:etc.Companion) = etc<localhost>(path)
+    @JvmName("root_usr") operator fun div(@Suppress(unused) a: Array<usr<Y>>) = usr<localhost>(path)
+    @JvmName("root_bin") operator fun div(@Suppress(unused) a: Array<bin<Y>>) = bin<localhost>(path)
+    @JvmName("root_etc") operator fun div(@Suppress(unused) a: Array<etc<Y>>) = etc<localhost>(path)
 
-    @JvmName("any_usr") operator fun times(@Suppress(unused) a:usr.Companion) = usr<Y>(path)
-    @JvmName("any_bin") operator fun times(@Suppress(unused) a:bin.Companion) = bin<Y>(path)
-    @JvmName("any_etc") operator fun times(@Suppress(unused) a:etc.Companion) = etc<Y>(path)
-    @JvmName("any_local") operator fun times(@Suppress(unused) a:local.Companion) = local<Y>(path)
-    @JvmName("any_sh") operator fun times(@Suppress(unused) a:sh.Companion) = sh<Y>(path)
-    @JvmName("any_vim") operator fun times(@Suppress(unused) a:vim.Companion) = vim<Y>(path)
+    @JvmName("any_usr") operator fun times(@Suppress(unused) a: Array<usr<Y>>) = usr<Y>(path)
+    @JvmName("any_bin") operator fun times(@Suppress(unused) a: Array<bin<Y>>) = bin<Y>(path)
+    @JvmName("any_etc") operator fun times(@Suppress(unused) a: Array<etc<Y>>) = etc<Y>(path)
+    @JvmName("any_local") operator fun times(@Suppress(unused) a: Array<local<Y>>) = local<Y>(path)
+    @JvmName("any_sh") operator fun times(@Suppress(unused) a: Array<sh<Y>>) = sh<Y>(path)
+    @JvmName("any_vim") operator fun times(@Suppress(unused) a: Array<vim<Y>>) = vim<Y>(path)
 
     override val fileName: String get() = ""
     override fun toString() = "/"
+
   }
 
-  @Yuri class bin<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri class sh<T>(uri: Array<Y>): Y(*uri) {
+  @Yuri
+  open class bin<T>(uri: Array<Y>): Y(*uri)
+  @Yuri
+  open class sh<T>(uri: Array<Y>): Y(*uri) {
     class distrib<U>(uri: Array<Y>): Y(*uri) {
       override val fileName: String get() = this.javaClass.name.split("\$").drop(1).joinToString(".")
 
-      @Yuri companion object
     }
 
-    @Yuri companion object
   }
 
   @Yuri class script<T>(uri: Array<Y>): Y(*uri) {
@@ -44,10 +45,15 @@ sealed class Y constructor(private vararg val uri: Y) {
     }
   }
 
-  @Yuri class etc<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri class vim<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri class usr<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
-  @Yuri class local<T>(uri: Array<Y>): Y(*uri) { @Yuri companion object }
+  @Yuri
+  open class etc<T>(uri: Array<Y>): Y(*uri)
+  @Yuri
+  open class vim<T>(uri: Array<Y>): Y(*uri)
+  @Yuri
+  open class usr<T>(uri: Array<Y>): Y(*uri) 
+  @Yuri
+  open class local<T>(uri: Array<Y>): Y(*uri)
+  
 
   @Yuri companion object {
     private val allPaths = arrayOf(
@@ -63,9 +69,13 @@ sealed class Y constructor(private vararg val uri: Y) {
         "/usr/local/bin/sh"
     )
 
-    @Yuri fun uri(file: Y) = File("$file")
-    @Yuri fun uri(file: G) = File("$file")
+    @Yuri fun uri(y: Y): File = File("$y")
+    @Yuri fun uri(g: G) = File("$g")
     @Yuri fun uris(y: Y) = allPaths.filter { it.endsWith("$y") }.map { File(it) }
+    @Yuri fun uri(file: Y, function: Y.() -> Unit = {}) = file.apply(function)
+    @Yuri fun uri(file: G, function: G.() -> Unit = {}) = file.apply(function)
+    @Yuri fun uris(vararg y: Y) = allPaths.filter { it.endsWith("$y") }.map { File(it) }
+
   }
 
   open val path: Array<Y> get() = arrayOf(*uri, this)
@@ -73,6 +83,18 @@ sealed class Y constructor(private vararg val uri: Y) {
 
   override fun toString() = path.joinToString("/") { it.fileName }
 }
+
+fun main(args: Array<String>) {
+  Y.uris(*etc/vim)
+
+}
+
+val usr: Array<usr<Y>> = arrayOf(usr<Y>(arrayOf()))
+val etc: Array<etc<Y>> = arrayOf(etc<Y>(arrayOf()))
+val bin: Array<bin<Y>> = arrayOf(bin<Y>(arrayOf()))
+val vim: Array<vim<Y>> = arrayOf(vim<Y>(arrayOf()))
+val local: Array<local<Y>> = arrayOf(local<Y>(arrayOf()))
+
 
 /**
  * localhost
@@ -91,26 +113,29 @@ sealed class Y constructor(private vararg val uri: Y) {
  *             └── sh
  */
 
-
-@JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
-@JvmName("01") operator fun <S: bin<usr<localhost>>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
-@JvmName("02") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
-@JvmName("03") operator fun <S: usr<localhost>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
-@JvmName("04") operator fun <S: usr<localhost>> S.div(@Suppress(unused) a:local.Companion) = local<S>(path)
-@JvmName("05") operator fun <S: local<usr<localhost>>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
-@JvmName("06") operator fun <S: bin<local<usr<localhost>>>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
+@JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a: Array<sh<Y>>) = sh<S>(path)
+@JvmName("01") operator fun <S: bin<usr<localhost>>> S.div(@Suppress(unused) a: Array<vim<Y>>) = vim<S>(path)
+@JvmName("02") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a: Array<vim<Y>>) = vim<S>(path)
+@JvmName("03") operator fun <S: usr<localhost>> S.div(@Suppress(unused) a: Array<bin<Y>>) = bin<S>(path)
+@JvmName("04") operator fun <S: usr<localhost>> S.div(@Suppress(unused) a: Array<local<Y>>) = local<S>(path)
+@JvmName("05") operator fun <S: local<usr<localhost>>> S.div(@Suppress(unused) a: Array<bin<Y>>) = bin<S>(path)
+@JvmName("06") operator fun <S: bin<local<usr<localhost>>>> S.div(@Suppress(unused) a: Array<sh<Y>>) = sh<S>(path)
 
 // File extension dot operator notation
-@JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a:sh.distrib.Companion) = sh.distrib<S>(path)
-@JvmName("00") operator fun <S: sh.distrib<bin<localhost>>> S.div(@Suppress(unused) a:sh.Companion) = vim<S>(path)
-@JvmName("00") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a:script.sh.Companion) = script.sh<S>(path)
+@JvmName("00") operator fun <S: bin<localhost>> S.div(@Suppress(unused) a: Array<sh.distrib<Y>>) = sh.distrib<S>(path)
+@JvmName("00") operator fun <S: sh.distrib<bin<localhost>>> S.div(@Suppress(unused) a: Array<sh<Y>>) = vim<S>(path)
+@JvmName("00") operator fun <S: etc<localhost>> S.div(@Suppress(unused) a: Array<script.sh<Y>>) = script.sh<S>(path)
 
-@JvmName("07") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:sh.Companion) = sh<S>(path)
-@JvmName("08") operator fun <S: bin<Y>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
-@JvmName("09") operator fun <S: etc<Y>> S.div(@Suppress(unused) a:vim.Companion) = vim<S>(path)
-@JvmName("10") operator fun <S: usr<Y>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
-@JvmName("11") operator fun <S: bin<usr<Y>>> S.div(@Suppress(unused) a:bin.Companion) = vim<S>(path)
-@JvmName("12") operator fun <S: usr<Y>> S.div(@Suppress(unused) a:local.Companion) = local<S>(path)
-@JvmName("13") operator fun <S: local<Y>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
-@JvmName("14") operator fun <S: local<usr<Y>>> S.div(@Suppress(unused) a:bin.Companion) = bin<S>(path)
-@JvmName("15") operator fun <S: bin<local<usr<Y>>>> S.div(@Suppress(unused) a:bin.Companion) = sh<S>(path)
+private val <T: Y> Array<T>.path: Array<Y>
+  get() = this[0].path
+
+@JvmName("07") operator fun <S: bin<Y>> Array<S>.div(@Suppress(unused) a:Array<sh<Y>>) = arrayOf(sh<S>(this.path))
+@JvmName("08") operator fun <S: bin<Y>> Array<S>.div(@Suppress(unused) a:Array<vim<Y>>) = arrayOf(vim<S>(path))
+@JvmName("09") operator fun <S: bin<Y>> Array<S>.div(@Suppress(unused) a:Array<sh.distrib<Y>>) = arrayOf(vim<S>(path))
+@JvmName("10") operator fun <S: etc<Y>> Array<S>.div(@Suppress(unused) a:Array<vim<Y>>) = arrayOf(vim<S>(path))
+@JvmName("11") operator fun <S: usr<Y>> Array<S>.div(@Suppress(unused) a:Array<bin<Y>>) = arrayOf(bin<S>(path))
+@JvmName("12") operator fun <S: bin<usr<Y>>> Array<S>.div(@Suppress(unused) a:Array<bin<Y>>) = arrayOf(vim<S>(path))
+@JvmName("13") operator fun <S: usr<Y>> Array<S>.div(@Suppress(unused) a:Array<local<Y>>) = arrayOf(local<S>(path))
+@JvmName("14") operator fun <S: local<Y>> Array<S>.div(@Suppress(unused) a:Array<bin<Y>>) = arrayOf(bin<S>(path))
+@JvmName("15") operator fun <S: local<usr<Y>>> Array<S>.div(@Suppress(unused) a:Array<bin<Y>>) = arrayOf(bin<S>(path))
+@JvmName("16") operator fun <S: bin<local<usr<Y>>>> Array<S>.div(@Suppress(unused) a:Array<bin<Y>>) = arrayOf(sh<S>(path))
