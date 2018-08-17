@@ -67,16 +67,16 @@ fun main(a: Array<String>) {
 
   listOf(
       // Compiles!
-      localhost *bin,
-      localhost *sh,
-      localhost *vim,
-      localhost *bin/sh,
-      localhost *etc/vim,
-      localhost *usr/bin
+      *bin,
+      *sh,
+      *vim,
+      *bin/sh,
+      *etc/vim,
+      *usr/bin
 
       // Does not compile!
-      // ,localhost *etc/bin
-      // ,localhost *etc/sh
-      // ,localhost *local/usr
+      // , *etc/bin
+      // , *etc/sh
+      // , *local/usr
   ).forEach { println("*$it -> ${Y.uris(it)}") }
 }
