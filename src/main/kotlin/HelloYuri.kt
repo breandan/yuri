@@ -78,5 +78,9 @@ fun main(a: Array<String>) {
       // , *etc/bin
       // , *etc/sh
       // , *local/usr
-  ).forEach { println("*$it -> ${Y.uris(it)}") }
+  ).forEach { path -> println("*$path -> ${Y.uris(path)}") }
+
+  println("\nBATCH OPERATIONS:\n")
+
+  Y.uris(*sh) { println(it) }
 }
