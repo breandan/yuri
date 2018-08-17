@@ -4,7 +4,7 @@ A type-safe URI builder for Kotlin. Work in progress.
 
 ## tree
 
-All of the following examples are based on this hypothetical file tree:
+All usage examples are based on the following hypothetical file tree:
 
 ```
 localhost
@@ -32,7 +32,7 @@ import Y.*
 
 ## validate
 
-Yuri provides compile-time URI validation with a nice syntax.
+Yuri provides compile-time URI validation with a [URI-like](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) syntax.
 
 ```kotlin
 listOf(
@@ -76,7 +76,7 @@ listOf(
 ```
 ## search
 
-You can even perform Kleene-star prefix search using Kotlin's [spread-operator](https://kotlinlang.org/docs/reference/functions.html#variable-number-of-arguments-varargs):
+You can perform Kleene-star prefix searches using Kotlin's [spread-operator](https://kotlinlang.org/docs/reference/functions.html#variable-number-of-arguments-varargs):
 
 ```kotlin
 listOf(                                       
@@ -97,7 +97,7 @@ listOf(
 
 ## batch
 
-Yuri provides an [extension function](https://kotlinlang.org/docs/reference/extensions.html#extension-functions) for batch operations over multiple files:
+Yuri provides an [extension function](https://kotlinlang.org/docs/reference/extensions.html#extension-functions) for batch ops over multiple files:
 
 ```kotlin
 Y.uris(*sh) { println(it) }
@@ -114,7 +114,7 @@ Y.uris(*sh) { it.setReadOnly() }
 
 ## how?
 
-See
+See:
 
 * [Y.kt](src/main/kotlin/Y.kt), for DSL and type checking
 * [build.gradle.kts](build.gradle.kts), for code generation
