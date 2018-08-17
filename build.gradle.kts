@@ -111,7 +111,7 @@ fun generateProjectSources() {
             .asReversed()
 
         val value = elements.first()
-        val key = elements.drop(1).joinToString("<") + "<project>" + ">".repeat(elements.size - 2)
+        val key = elements.drop(1).joinToString("<") + "<projectDir>" + ">".repeat(elements.size - 2)
 
         Pair(key, value)
       }
@@ -134,7 +134,7 @@ fun generateProjectSources() {
           .addProperty(PropertySpec.builder("uri", String::class)
               .initializer("uri")
               .build())
-          .addType(TypeSpec.objectBuilder("project")
+          .addType(TypeSpec.objectBuilder("projectDir")
               .superclass(ClassName("", "G"))
               .addSuperclassConstructorParameter("\"${project.projectDir.absolutePath}\"")
               .addFunctions(topLevelFileNames.map {
@@ -143,7 +143,7 @@ fun generateProjectSources() {
                     .addAnnotation(AnnotationSpec.builder(JvmName::class).addMember("\"$it\"").build())
                     .addParameter(ParameterSpec.builder("a", ClassName("", "$it.Companion"))
                         .addAnnotation(suppressAnnotation).build())
-                    .addStatement("return $it<project>(uri)")
+                    .addStatement("return $it<projectDir>(uri)")
                     .build()
               }.asIterable())
               .addFunction(FunSpec.builder("toString")

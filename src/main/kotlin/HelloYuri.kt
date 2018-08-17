@@ -40,12 +40,12 @@ fun main(a: Array<String>) {
       Y.uri(localhost /usr/local/bin),
       Y.uri(localhost /usr/local/bin/sh),
 
-      Y.uri(project),
-      Y.uri(project /gradle),
-      Y.uri(project /gradlew),
-      Y.uri(project /settings_dot_gradle),
-      Y.uri(project /src/main),
-      Y.uri(project /src/main/kotlin)
+      Y.uri(projectDir),
+      Y.uri(projectDir /gradle),
+      Y.uri(projectDir /gradlew),
+      Y.uri(projectDir /settings_dot_gradle),
+      Y.uri(projectDir /src/main),
+      Y.uri(projectDir /src/main/kotlin)
 
       // Does not compile!
       // ,Y.uri(localhost /local)
@@ -57,10 +57,10 @@ fun main(a: Array<String>) {
       // ,Y.uri(localhost /etc/script)
       // ,Y.uri(localhost /usr/local/sh)
       // ,Y.uri(localhost /usr/local/bin/sh.distrib)
-      // ,Y.uri(project /test)
-      // ,Y.uri(project /compileKotlin)
-      // ,Y.uri(project /kotlin)
-      // ,Y.uri(project /production/classes/main)
+      // ,Y.uri(projectDir /test)
+      // ,Y.uri(projectDir /compileKotlin)
+      // ,Y.uri(projectDir /kotlin)
+      // ,Y.uri(projectDir /production/classes/main)
   ).forEach { println("$it") }
 
   println("\nKLEENE STAR SEARCH:\n")
