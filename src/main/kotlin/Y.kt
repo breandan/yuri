@@ -11,10 +11,6 @@ private const val unused = "UNUSED_PARAMETER"
 @Yuri
 sealed class Y constructor(private vararg val uri: Y): File(uri.toString()) {
   @Yuri object localhost: Y() {
-    @JvmName("root_usr") operator fun div(@Suppress(unused) a: Array<usr<Y>>) = arrayOf(`/usr`(path))
-    @JvmName("root_bin") operator fun div(@Suppress(unused) a: Array<bin<Y>>) = arrayOf(`/bin`(path))
-    @JvmName("root_etc") operator fun div(@Suppress(unused) a: Array<etc<Y>>) = arrayOf(`/etc`(path))
-
     override val fileName: String get() = ""
     override fun toString() = "/"
   }
@@ -117,6 +113,10 @@ typealias `local/` = local<Y>
 typealias `sh.distrib/` = distrib<sh<Y>>
 typealias `script/` = script<Y>
 typealias `script.sh` = sh<`script/`>
+
+@JvmName("root_usr") operator fun <S: `/`, T: usr<Y>> S.div(@Suppress(unused) a: Array<T>) = arrayOf(usr<S>(path))
+@JvmName("root_bin") operator fun <S: `/`, T: bin<Y>> S.div(@Suppress(unused) a: Array<T>) = arrayOf(bin<S>(path))
+@JvmName("root_etc") operator fun <S: `/`, T: etc<Y>> S.div(@Suppress(unused) a: Array<T>) = arrayOf(etc<S>(path))
 
 @JvmName("00") operator fun <S: `/bin`, T: sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
 @JvmName("01") operator fun <S: `/usr/bin`, T: vim<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(vim<S>(path))
