@@ -99,62 +99,56 @@ typealias `/usr/local` = local<`/usr`>
 typealias `/usr/local/bin` = bin<`/usr/local`>
 typealias `/usr/local/bin/sh` = sh<`/usr/local/bin`>
 
-typealias `*bin` = bin<Y>
-typealias `*bin/sh` = sh<bin<Y>>
-typealias `*bin/sh.distrib` = distrib<`*bin/sh`>
-typealias `*bin/sh.distrib/sh` = sh<`*bin/sh.distrib`>
-typealias `*etc` = etc<Y>
-typealias `*etc/vim` = vim<etc<Y>>
-typealias `*etc/script` = script<etc<Y>>
-typealias `*etc/script.sh` = sh<`*etc/script`>
-typealias `*usr` = usr<Y>
-typealias `*usr/bin` = bin<`*usr`>
-typealias `*usr/bin/vim` = vim<`*usr/bin`>
-typealias `*usr/local` = local<`*usr`>
-typealias `*usr/local/bin` = bin<`*usr/local`>
-typealias `*usr/local/bin/sh` = sh<`*usr/local/bin`>
-typealias `*local` = local<Y>
-typealias `*sh` = sh<Y>
-typealias `*sh.distrib` = distrib<`*sh`>
-typealias `*script` = script<Y>
-typealias `*script.sh` = sh<`*script`>
-typealias `*vim` = vim<Y>
+typealias `bin/` = bin<Y>
+typealias `bin/sh/` = sh<bin<Y>>
+typealias `bin/sh.distrib/` = distrib<`bin/sh/`>
+typealias `bin/sh.distrib/sh/` = sh<`bin/sh.distrib/`>
+typealias `etc/` = etc<Y>
+typealias `etc/vim/` = vim<etc<Y>>
+typealias `etc/script/` = script<etc<Y>>
+typealias `etc/script.sh/` = sh<`etc/script/`>
+typealias `usr/` = usr<Y>
+typealias `usr/bin/` = bin<`usr/`>
+typealias `usr/bin/vim/` = vim<`usr/bin/`>
+typealias `usr/local/` = local<`usr/`>
+typealias `usr/local/bin/` = bin<`usr/local/`>
+typealias `usr/local/bin/sh/` = sh<`usr/local/bin/`>
+typealias `local/` = local<Y>
+typealias `sh.distrib/` = distrib<sh<Y>>
+typealias `script/` = script<Y>
+typealias `script.sh` = sh<`script/`>
 
-@JvmName("00") operator fun <S: `/bin`, T: `*sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
-@JvmName("01") operator fun <S: `/usr/bin`, T: `*vim`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(vim<S>(path))
-@JvmName("02") operator fun <S: `/etc`, T: `*vim`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(vim<S>(path))
-@JvmName("03") operator fun <S: `/usr`, T: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(bin<S>(path))
-@JvmName("04") operator fun <S: `/usr`, T: `*local`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(local<S>(path))
-@JvmName("05") operator fun <S: `/usr/local`, T: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(bin<S>(path))
-@JvmName("06") operator fun <S: `/usr/local/bin`, T: `*sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
+@JvmName("00") operator fun <S: `/bin`, T: sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
+@JvmName("01") operator fun <S: `/usr/bin`, T: vim<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(vim<S>(path))
+@JvmName("02") operator fun <S: `/etc`, T: vim<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(vim<S>(path))
+@JvmName("03") operator fun <S: `/usr`, T: `bin/`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(bin<S>(path))
+@JvmName("04") operator fun <S: `/usr`, T: `local/`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(local<S>(path))
+@JvmName("05") operator fun <S: `/usr/local`, T: `bin/`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(bin<S>(path))
+@JvmName("06") operator fun <S: `/usr/local/bin`, T: sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
 
 // Two-hop dot operator definition
-@JvmName("07") operator fun <S: `/bin`, T: `*sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(distrib<sh<S>>(path))
-@JvmName("08") operator fun <S: `/bin/sh.distrib`, T: `*sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
-@JvmName("09") operator fun <S: `/etc`, T: `*script.sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<script<S>>(path))
+@JvmName("07") operator fun <S: `/bin`, T: `sh.distrib/`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(distrib<sh<S>>(path))
+@JvmName("08") operator fun <S: `/bin/sh.distrib`, T: sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<S>(path))
+@JvmName("09") operator fun <S: `/etc`, T: `script.sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(sh<script<S>>(path))
 
 // File extension notation
-val <T: sh<Y>> Array<T>.distrib: Array<distrib<T>>
-  get() = arrayOf(distrib(path))
-
-val <T: script<Y>> Array<T>.sh: Array<sh<T>>
-  get() = arrayOf(sh(path))
+val <T: sh<Y>> Array<T>.distrib: Array<distrib<T>> get() = arrayOf(distrib(path))
+val <T: script<Y>> Array<T>.sh: Array<sh<T>> get() = arrayOf(sh(path))
 
 // Shorthand for accessing path
-private val <T: Y> Array<T>.path: Array<Y>
-  get() = this[0].path
+private val <T: Y> Array<T>.path: Array<Y> get() = this[0].path
 
 // All valid prefix strings for Kleene-star search
-@JvmName("10") operator fun <S: `*bin`, T: `*sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
-@JvmName("11") operator fun <S: `*bin`, T: `*vim`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
-@JvmName("12") operator fun <S: `*bin`, T: `*sh.distrib`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(distrib<sh<S>>(path))
-@JvmName("13") operator fun <S: `*etc`, T: `*vim`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
-@JvmName("14") operator fun <S: `*etc`, T: `*script.sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<script<S>>(path))
-@JvmName("15") operator fun <S: `*usr`, T: `*bin`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
-@JvmName("16") operator fun <S: `*usr/bin`, T: `*vim`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
-@JvmName("17") operator fun <S: `*usr`, T: `*local`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(local<S>(path))
-@JvmName("18") operator fun <S: `*local`, T: `*bin`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
-@JvmName("19") operator fun <S: `*usr/local`, T: `*bin`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
-@JvmName("20") operator fun <S: `*usr/local/bin`, T: `*sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
-@JvmName("21") operator fun <S: `*sh.distrib`, T: `*sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
-@JvmName("22") operator fun <S: `*bin/sh.distrib`, T: `*sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
+@JvmName("10") operator fun <S: `bin/`, T: sh<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
+@JvmName("11") operator fun <S: `bin/`, T: vim<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
+@JvmName("12") operator fun <S: `bin/`, T: `sh.distrib/`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(distrib<sh<S>>(path))
+@JvmName("13") operator fun <S: `etc/`, T: vim<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
+@JvmName("14") operator fun <S: `etc/`, T: `script.sh`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<script<S>>(path))
+@JvmName("15") operator fun <S: `usr/`, T: `bin/`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
+@JvmName("16") operator fun <S: `usr/bin/`, T: vim<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(vim<S>(path))
+@JvmName("17") operator fun <S: `usr/`, T: `local/`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(local<S>(path))
+@JvmName("18") operator fun <S: `local/`, T: `bin/`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
+@JvmName("19") operator fun <S: `usr/local/`, T: `bin/`> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(bin<S>(path))
+@JvmName("20") operator fun <S: `usr/local/bin/`, T: sh<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
+@JvmName("21") operator fun <S: `sh.distrib/`, T: sh<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))
+@JvmName("22") operator fun <S: `bin/sh.distrib/`, T: sh<Y>> Array<S>.div(@Suppress(unused) a:Array<T>) = arrayOf(sh<S>(path))

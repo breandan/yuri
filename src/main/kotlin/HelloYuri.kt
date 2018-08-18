@@ -85,6 +85,7 @@ fun main(a: Array<String>) {
       // , *local/usr
       // , *sh/distrib
       // , *sh/sh
+      // , *usr/local/bin/vim
   ).forEach { path -> println("*$path -> ${Y.uris(path)}") }
 
   println("\nBATCH OPERATIONS:\n")
