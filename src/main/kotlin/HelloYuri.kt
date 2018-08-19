@@ -2,6 +2,7 @@ package main.kotlin
 
 import main.kotlin.Y.*
 import main.kotlin.G.*
+import java.net.URI
 
 fun main(a: Array<String>) {
   println(""" MOCK FILE TREE:
@@ -35,7 +36,7 @@ fun main(a: Array<String>) {
       Y.uri(localhost /etc/vim),
       Y.uri(localhost /etc/script.sh),
       Y.uri(localhost /usr),
-      Y.uri(localhost /usr/bin/vim),
+      Y.uri(localhost /usr/bin),
       Y.uri(localhost /usr/local),
       Y.uri(localhost /usr/local/bin),
       Y.uri(localhost /usr/local/bin/sh),
@@ -78,6 +79,8 @@ fun main(a: Array<String>) {
       *sh.distrib/sh,
       *script.sh,
       *etc/script.sh
+//      *usr/local/bin/sh,
+//      *local/bin/sh
 
       // Does not compile!
       // , *etc/bin
@@ -86,9 +89,13 @@ fun main(a: Array<String>) {
       // , *sh/distrib
       // , *sh/sh
       // , *usr/local/bin/vim
-  ).forEach { path -> println("*$path -> ${Y.uris(path)}") }
+  ).forEach { path -> println("$path -> ${Y.uris(path)}") }
 
   println("\nBATCH OPERATIONS:\n")
 
   Y.uris(*sh) { println(it) }
+
+  println("\nSORTED PATHS:\n")
+
+  val t = allPaths.map { URI(it) }.sorted().forEach { println(it) }
 }

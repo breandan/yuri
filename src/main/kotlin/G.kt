@@ -222,6 +222,14 @@ sealed class G(val uri: String = "/") {
         companion object
     }
 
+    class dictionaries<T>(uri: String) : G(uri) {
+        companion object
+    }
+
+    class brendan_dot_xml<T>(uri: String) : G(uri) {
+        companion object
+    }
+
     class misc_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
@@ -360,13 +368,19 @@ operator fun <S : modules<_dot_idea<projectDir>>> S.div(@Suppress(unused) a: yur
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: libraries.Companion) = libraries<S>("$this")
 
 @JvmName("36")
-operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
+operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: dictionaries.Companion) = dictionaries<S>("$this")
 
 @JvmName("37")
-operator fun <S : gradle<projectDir>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
+operator fun <S : dictionaries<_dot_idea<projectDir>>> S.div(@Suppress(unused) a: brendan_dot_xml.Companion) = brendan_dot_xml<S>("$this")
 
 @JvmName("38")
-operator fun <S : wrapper<gradle<projectDir>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
+operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
 
 @JvmName("39")
+operator fun <S : gradle<projectDir>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
+
+@JvmName("40")
+operator fun <S : wrapper<gradle<projectDir>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
+
+@JvmName("41")
 operator fun <S : wrapper<gradle<projectDir>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<S>("$this")
