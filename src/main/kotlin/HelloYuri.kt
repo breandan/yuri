@@ -78,9 +78,9 @@ fun main(a: Array<String>) {
       *sh.distrib,
       *sh.distrib/sh,
       *script.sh,
-      *etc/script.sh
-//      *usr/local/bin/sh,
-//      *local/bin/sh
+      *etc/script.sh,
+      *usr/local/bin/sh,
+      *local/bin/sh
 
       // Does not compile!
       // , *etc/bin
@@ -97,5 +97,5 @@ fun main(a: Array<String>) {
 
   println("\nSORTED PATHS:\n")
 
-  val t = allPaths.map { URI(it) }.sorted().forEach { println(it) }
+  allPaths.map { URI(it) }.sorted().forEach { println(it) }
 }

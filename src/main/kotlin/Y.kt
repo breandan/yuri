@@ -22,7 +22,7 @@ val allPaths = arrayOf(
 private typealias `/` = localhost
 private typealias `/bin/` = D.bin<`/`>
 private typealias `/bin/sh` = F.sh<`/bin/`>
-private typealias `/bin/sh.distrib/` = D.distrib<P.sh<`/bin/`>>
+private typealias `/bin/sh.distrib/` = D.sh.distrib<`/bin/`>
 private typealias `/etc/` = D.etc<`/`>
 private typealias `/usr/` = D.usr<`/`>
 private typealias `/usr/bin/` = D.bin<`/usr/`>
@@ -37,14 +37,23 @@ private typealias `*sh` = Y.sh<Y>
 private typealias `*script` = Y.script<Y>
 private typealias `*local` = Y.local<Y>
 private typealias `*distrib` = Y.distrib<Y>
+private typealias `*script.sh` = Y.script.sh<Y>
+private typealias `*sh.distrib` = Y.sh.distrib<Y>
+
 private typealias `*bin/sh` = Y.sh<D.bin<Y>>
-private typealias `*bin/sh.distrib` = Y.distrib<P.sh<D.bin<Y>>>
+private typealias `*bin/vim` = Y.vim<D.bin<Y>>
+private typealias `*bin/sh.distrib` = Y.sh.distrib<D.bin<Y>>
+private typealias `*bin/sh.distrib/sh` = Y.sh<D.sh.distrib<D.bin<Y>>>
+private typealias `*etc/script.sh` = Y.script.sh<D.etc<Y>>
+private typealias `*etc/vim` = Y.vim<D.etc<Y>>
 private typealias `*local/bin` = Y.bin<D.local<Y>>
+private typealias `*local/bin/sh` = Y.sh<D.bin<D.local<Y>>>
 private typealias `*usr/bin` = Y.bin<D.usr<Y>>
+private typealias `*usr/bin/vim` = Y.vim<D.bin<D.usr<Y>>>
 private typealias `*usr/local` = Y.local<D.usr<Y>>
 private typealias `*usr/local/bin` = Y.bin<D.local<D.usr<Y>>>
-private typealias `*sh.distrib` = Y.distrib<P.sh<Y>>
-private typealias `*script.sh` = Y.sh<P.script<Y>>
+private typealias `*usr/local/bin/sh` = Y.sh<D.bin<D.local<D.usr<Y>>>>
+private typealias `*sh.distrib/sh` = Y.sh<D.sh.distrib<Y>>
 
 @DslMarker
 annotation class Yuri
@@ -64,10 +73,10 @@ annotation class Yuri
 @JvmName("ac") operator fun <T: Y.etc<Y>> `/`.div(@Suppress(unused) a: Array<T>) = arrayOf(D.etc<`/`>(`/`))
 
 @JvmName("00") operator fun <S: `/bin/`, T: Y.sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.sh<S>(path))
-@JvmName("01") operator fun <S: `/bin/`, T: `*sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(D.distrib<P.sh<S>>(P.sh<S>(path)))
+@JvmName("01") operator fun <S: `/bin/`, T: `*sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(D.sh.distrib<S>(path))
 @JvmName("02") operator fun <S: `/bin/sh.distrib/`, T: Y.sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.sh<S>(path))
 @JvmName("03") operator fun <S: `/etc/`, T: Y.vim<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.vim<S>(path))
-@JvmName("04") operator fun <S: `/etc/`, T: `*script.sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.sh<P.script<S>>(P.script<S>(path)))
+@JvmName("04") operator fun <S: `/etc/`, T: `*script.sh`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.script.sh<S>(path))
 @JvmName("05") operator fun <S: `/usr/`, T: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(D.bin<S>(path))
 @JvmName("06") operator fun <S: `/usr/`, T: `*local`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(D.local<S>(path))
 @JvmName("07") operator fun <S: `/usr/bin/`, T: Y.vim<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.vim<S>(path))
@@ -75,27 +84,27 @@ annotation class Yuri
 @JvmName("09") operator fun <S: `/usr/local/bin/`, T: Y.sh<Y>> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(F.sh<S>(path))
 
 // File extension notation
-val <S: `*sh`> Array<S>.distrib: Array<Y.distrib<P.sh<Y>>> get() = arrayOf(Y.distrib(P.sh<S>(path)))
-val <S: `*script`> Array<S>.sh: Array<Y.sh<P.script<Y>>> get() = arrayOf(Y.sh(P.script<S>(path)))
+val <S: `*sh`> Array<S>.distrib: Array<`*sh.distrib`> get() = arrayOf(`*sh.distrib`(path))
+val <S: `*script`> Array<S>.sh: Array<`*script.sh`> get() = arrayOf(`*script.sh`(path))
 
 // Shorthand for accessing path
 private val <T: Y> Array<T>.path: Y get() = this[0]
 
 // All valid prefix strings for Kleene-star search
-@JvmName("10") operator fun <T: `*bin`, S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.bin<S>(path))
-@JvmName("11") operator fun <T: `*bin`, S: `*local`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.bin<S>(path))
-@JvmName("12") operator fun <T: `*bin`, S: `*usr/local`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.bin<S>(path))
-@JvmName("13") operator fun <T: `*local`, S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.local<S>(path))
-@JvmName("14") operator fun <T: `*sh.distrib`, S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.distrib<P.sh<S>>(P.sh<S>(path)))
-@JvmName("15") operator fun <T: `*sh`, S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<S>(path))
-@JvmName("16") operator fun <T: `*sh`, S: `*sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<S>(path))
-@JvmName("17") operator fun <T: `*sh`, S: `*local/bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<S>(path))
-@JvmName("18") operator fun <T: `*sh`, S: `*bin/sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<S>(path))
-@JvmName("19") operator fun <T: `*sh`, S: `*usr/local/bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<S>(path))
-@JvmName("20") operator fun <T: `*script.sh`, S: `*etc`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.sh<P.script<S>>(P.script<S>(path)))
-@JvmName("21") operator fun <T: `*vim`, S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.vim<S>(path))
-@JvmName("22") operator fun <T: `*vim`, S: `*etc`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.vim<S>(path))
-@JvmName("23") operator fun <T: `*vim`, S: `*usr/bin`> Array<S>.div(@Suppress(unused) a: Array<T>) = arrayOf(Y.vim<S>(path))
+@JvmName("10") operator fun <S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<`*bin`>) = arrayOf(`*usr/bin`(path))
+@JvmName("13") operator fun <S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<`*local`>) = arrayOf(`*usr/local`(path))
+@JvmName("11") operator fun <S: `*local`> Array<S>.div(@Suppress(unused) a: Array<`*bin`>) = arrayOf(`*local/bin`(path))
+@JvmName("12") operator fun <S: `*usr/local`> Array<S>.div(@Suppress(unused) a: Array<`*bin`>) = arrayOf(`*usr/local/bin`(path))
+@JvmName("14") operator fun <S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<`*sh.distrib`>) = arrayOf(`*bin/sh.distrib`(path))
+@JvmName("15") operator fun <S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<`*sh`>) = arrayOf(`*bin/sh`(path))
+@JvmName("16") operator fun <S: `*sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<`*sh`>) = arrayOf(`*sh.distrib/sh`(path))
+@JvmName("17") operator fun <S: `*local/bin`> Array<S>.div(@Suppress(unused) a: Array<`*sh`>) = arrayOf(`*local/bin/sh`(path))
+@JvmName("18") operator fun <S: `*bin/sh.distrib`> Array<S>.div(@Suppress(unused) a: Array<`*sh`>) = arrayOf(`*bin/sh.distrib/sh`(path))
+@JvmName("19") operator fun <S: `*usr/local/bin`> Array<S>.div(@Suppress(unused) a: Array<`*sh`>) = arrayOf(`*usr/local/bin/sh`(path))
+@JvmName("20") operator fun <S: `*etc`> Array<S>.div(@Suppress(unused) a: Array<`*script.sh`>) = arrayOf(`*etc/script.sh`(path))
+@JvmName("21") operator fun <S: `*bin`> Array<S>.div(@Suppress(unused) a: Array<`*vim`>) = arrayOf(`*bin/vim`(path))
+@JvmName("22") operator fun <S: `*etc`> Array<S>.div(@Suppress(unused) a: Array<`*vim`>) = arrayOf(`*etc/vim`(path))
+@JvmName("23") operator fun <S: `*usr/bin`> Array<S>.div(@Suppress(unused) a: Array<`*vim`>) = arrayOf(`*usr/bin/vim`(path))
 
 private const val unused = "UNUSED_PARAMETER"
 
@@ -110,8 +119,17 @@ sealed class Y constructor(private vararg val parent: Y?): File(parent.toString(
   open class vim<T>(parent: Y?): Y(parent)
   open class usr<T>(parent: Y?): Y(parent)
   open class local<T>(parent: Y?): Y(parent)
-  open class sh<T>(parent: Y?): Y(parent)
-  open class script<T>(parent: Y?): Y(parent)
+  open class sh<T>(parent: Y?): Y(parent) {
+    open class distrib<T>(parent: Y?): Y(parent) {
+      override val fileName: String get() = "sh.distrib"
+    }
+  }
+  open class script<T>(parent: Y?): Y(parent) {
+    open class sh<T>(parent: Y?): Y(parent) {
+      override val fileName: String get() = "script.sh"
+    }
+  }
+
   open class distrib<T>(parent: Y?): Y(parent)
 
   open class F<T>(private val parent: Y?): Y(parent) {
@@ -120,27 +138,30 @@ sealed class Y constructor(private vararg val parent: Y?): File(parent.toString(
     open class vim<T>(parent: Y?): Y.vim<T>(parent)
     open class usr<T>(parent: Y?): Y.usr<T>(parent)
     open class local<T>(parent: Y?): Y.local<T>(parent)
-    open class sh<T>(parent: Y?): Y.sh<T>(parent)
-    open class distrib<T>(parent: Y?): Y.distrib<T>(parent)
+    open class script<T>(parent: Y?): Y(parent) {
+      open class sh<T>(parent: Y?): Y(parent) {
+        override val fileName: String get() = "script.sh"
+      }
+    }
+    open class sh<T>(parent: Y?): F<T>(parent) {
+      open class distrib<T>(parent: Y?): F<T>(parent) {
+        override val fileName: String get() = "sh.distrib"
+      }
+    }
   }
 
   open class D<T>(private val parent: Y?): F<T>(parent) {
     class bin<T>(parent: Y?): D<T>(parent)
-    class script<T>(parent: Y?): D<T>(parent)
     class etc<T>(parent: Y?): D<T>(parent)
-    class vim<T>(parent: Y?): D<T>(parent)
     class usr<T>(parent: Y?): D<T>(parent)
     class local<T>(parent: Y?): D<T>(parent)
-    class sh<T>(parent: Y?): D<T>(parent)
-    class distrib<T>(parent: Y?): D<T>(parent)
-    override fun toString() = if(parent == null) "*" else "$parent$fileName/"
+    open class sh<T>(parent: Y?): D<T>(parent) {
+      open class distrib<T>(parent: Y?): D<T>(parent) {
+        override val fileName: String get() = "sh.distrib"
+      }
+    }
 
-  }
-
-  open class P<T>(private val parent: Y?): Y(parent) {
-    class script<T>(parent: Y?): P<T>(parent)
-    class sh<T>(parent: Y?): P<T>(parent)
-    override fun toString() = if(parent == null) "*" else "$parent$fileName."
+    override fun toString() = if(parent == null) "*$fileName/" else "$parent$fileName/"
   }
 
   companion object {
