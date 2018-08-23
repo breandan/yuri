@@ -91,6 +91,7 @@ val <S: `*script`> Array<S>.sh: Array<`*script.sh`> get() = arrayOf(`*script.sh`
 private val <T: Y> Array<T>.path: Y get() = this[0]
 
 // All valid prefix strings for Kleene-star search
+// It may be tempting to return Y.file<S>, but remember: this will break the chain. We need to return a more specific S (i.e. the directory type)
 @JvmName("10") operator fun <S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<`*bin`>) = arrayOf(`*usr/bin`(path))
 @JvmName("13") operator fun <S: `*usr`> Array<S>.div(@Suppress(unused) a: Array<`*local`>) = arrayOf(`*usr/local`(path))
 @JvmName("11") operator fun <S: `*local`> Array<S>.div(@Suppress(unused) a: Array<`*bin`>) = arrayOf(`*local/bin`(path))
@@ -168,10 +169,10 @@ sealed class Y constructor(private vararg val parent: Y?): File(parent.toString(
     fun uri(y: Y): File = y
     fun uri(y: Array<out Y>): File = File("${y.first()}")
     fun uri(g: G) = File("$g")
-    fun uris(y: Y) = allPaths.filter { it.endsWith("$y") }.map { File(it) }
+    fun uris(y: Y) = allPaths.filter { it.matches(".$y".toRegex()) }.map { File(it) }
     fun uris(vararg files: Y, function: (File) -> Unit = {}) = uris(files.first()).forEach(function)
   }
 
   open val fileName: String get() = this.javaClass.simpleName
-  override fun toString() = if(parent.isEmpty() || parent[0] == null) "*$fileName" else "${parent[0]}$fileName"
+  override fun toString() = if(parent.isEmpty() || parent[0] == null) "*$fileName" else "${parent[0]}/$fileName"
 }
