@@ -30,7 +30,7 @@ To work properly, Yuri needs a wildcard import:
 import Y.*
 ```
 
-## validate
+## usage
 
 Yuri provides compile-time URI validation with a [URI-like](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier) syntax.
 
@@ -74,6 +74,7 @@ listOf(
     // ,Y.uri(projectDir /production/classes/main)
 ).forEach { println("$it") }
 ```
+
 ## search
 
 You can perform Kleene-star prefix searches using Kotlin's [spread-operator](https://kotlinlang.org/docs/reference/functions.html#variable-number-of-arguments-varargs):
@@ -113,11 +114,23 @@ Y.uris(*sh) { it.appendText("Hello Yuri") }
 Y.uris(*sh) { it.setReadOnly() }
 ```
 
-## run
+## examples
+
+To reproduce the example code above, run the following command from the project directory:
 
 ```
 ./gradlew run
 ```
+
+## generate
+
+To [re]generate the file tree, run the following command from the project directory:
+
+```
+./gradlew genSources [-Path=<absolute path to perform file tree scan>]
+```
+
+Unless `-Path` is specified, Yuri will scan the project directory. Code generation is provided by [Kotlin Poet](https://github.com/square/kotlinpoet).
 
 ## how?
 
@@ -128,11 +141,13 @@ See:
 
 ## why?
 
-- Because Strings are a pain and most filesystems can be scanned quickly
+- Because Strings are error prone ([`FileNotFoundException`](https://docs.oracle.com/javase/7/docs/api/java/io/FileNotFoundException.html), [`NoSuchFileException`](https://docs.oracle.com/javase/7/docs/api/java/nio/file/NoSuchFileException.html)...)
 
-- To stress script Kotlin's type checker (more on this later)
+- Many filesystems can be scanned quickly and do not change
 
-- Real time automatic code generation is getting much better
+- To stress test Kotlin's type checker
+
+- Real time automatic code generation is getting better
 
 - Abusing operator overloading is fun! Learn how a DSL works
 
@@ -140,4 +155,4 @@ See:
 
 - Static resource discovery, e.g. webpage crawling, IP address scanning
 
-- Projects freqently need to reference project-local resources
+- Projects freqently need to reference absolute or project-local resources
