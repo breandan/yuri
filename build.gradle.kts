@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.psi.KtModifierListOwner
 import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
 
 plugins {
-  kotlin("jvm") version "1.2.61"
+  kotlin("jvm") version "1.2.71"
   idea apply true
   application
   id("com.gradle.plugin-publish") version "0.10.0"
