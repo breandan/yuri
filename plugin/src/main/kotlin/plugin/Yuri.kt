@@ -127,9 +127,8 @@ open class Yuri : Plugin<Project> {
 
   override fun apply(project: Project) {
     project.run {
-
       tasks {
-        register("genSourceTask", Copy::class) {
+        register("yuriTask", Copy::class) {
           generateProjectSources(project.projectDir.absolutePath)
         }
       }
