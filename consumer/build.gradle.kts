@@ -8,3 +8,5 @@ buildscript {
     jcenter()
   }
 }
+
+application.mainClassName = "main/kotlin/HelloYuriKt"
