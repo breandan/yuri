@@ -129,7 +129,7 @@ sealed class Y constructor(private vararg val uri: Y): File(uri.toString()) {
 
     @Yuri fun uri(y: Y): File = y
     @Yuri fun uri(y: Array<out Y>): File = File("${y.first()}")
-    @Yuri fun uri(g: G) = File("$g")
+//    @Yuri fun uri(g: G) = File("$g")
     @Yuri fun uris(y: Y) = allPaths.filter { it.endsWith("$y") }.map { File(it) }
     @Yuri fun uris(vararg files: Y, function: (File) -> Unit = {}) = uris(files.first()).forEach(function)
   }

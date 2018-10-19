@@ -1,12 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
 
-//import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-//import org.jetbrains.kotlin.psi.KtModifierListOwner
-//import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
-
 plugins {
   idea apply true
-  application
   `kotlin-dsl`
   id("com.gradle.plugin-publish") version "0.10.0"
   `java-gradle-plugin`
@@ -22,9 +17,9 @@ buildscript {
 }
 
 repositories {
+  jcenter()
   mavenCentral()
   maven("https://dl.bintray.com/kotlin/kotlin-eap")
-  jcenter()
 }
 
 pluginBundle {
@@ -45,18 +40,9 @@ dependencies {
   compile("com.squareup:kotlinpoet:1.0.0-RC1")
 }
 
-// TODO: Figure out why this doesn't work
-idea.module {
-  generatedSourceDirs.add(File("src/gen"))
-  sourceDirs.add(File("src"))
-}
-
-group = "co.ndan"
-version = "0.1"
-
 gradlePlugin.plugins.register("yuriPlugin") {
   id = "yuri-plugin"
-  implementationClass = "main.kotlin.plugin.Yuri"
+  implementationClass = "main.kotlin.co.ndan.yuri.Yuri"
 }
 
 publishing.repositories.maven(url = "build/repository")

@@ -1,7 +1,6 @@
 package main.kotlin
 
 import main.kotlin.Y.*
-import main.kotlin.G.*
 
 fun main(a: Array<String>) {
   println(""" MOCK FILE TREE:
