@@ -12,14 +12,16 @@ group = "co.ndan"
 version = "0.1-SNAPSHOT"
 
 buildscript {
-  dependencies.classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.60")
-  repositories.maven("https://dl.bintray.com/kotlin/kotlin-eap")
+  dependencies.classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.61")
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
 }
 
 repositories {
   jcenter()
   mavenCentral()
-  maven("https://dl.bintray.com/kotlin/kotlin-eap")
 }
 
 pluginBundle {
@@ -42,7 +44,7 @@ dependencies {
 
 gradlePlugin.plugins.register("yuriPlugin") {
   id = "yuri-plugin"
-  implementationClass = "main.kotlin.co.ndan.yuri.Yuri"
+  implementationClass = "co.ndan.yuri.Yuri"
 }
 
 publishing.repositories.maven(url = "build/repository")

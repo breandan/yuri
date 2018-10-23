@@ -1,4 +1,4 @@
-package main.kotlin.co.ndan.yuri
+package co.ndan.yuri
 
 import com.squareup.kotlinpoet.*
 import org.gradle.api.Plugin

@@ -1,2 +1,1 @@
-rootProject.name = "yuri"
-
+enableFeaturePreview("STABLE_PUBLISHING")
