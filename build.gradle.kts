@@ -6,7 +6,7 @@ tasks {
 
   val consumer by registering(GradleBuild::class) {
     dir = file("consumer")
-    tasks = listOf("yuriTask")
+    tasks = listOf("run")
   }
 
   consumer {

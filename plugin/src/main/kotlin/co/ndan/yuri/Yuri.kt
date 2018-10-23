@@ -47,7 +47,7 @@ open class Yuri : Plugin<Project> {
           Pair(key, value)
         }
 
-    val header = "package main.kotlin\nimport main.kotlin.G.*\n"
+    val header = "package generated\nimport generated.G.*\n"
 
     val suppressAnnotation = AnnotationSpec.builder(Suppress::class).addMember("unused").build()
 
@@ -122,16 +122,11 @@ open class Yuri : Plugin<Project> {
         .build()
         .toString()
 
-    return File("G.kt").writeText("$header$Gkt")
+    File(path).mkdirs()
+    return File("$path/G.kt").writeText("$header$Gkt")
   }
 
   override fun apply(project: Project) {
-    project.run {
-      tasks {
-        register("yuriTask", Copy::class) {
-          generateProjectSources(project.projectDir.absolutePath)
-        }
-      }
-    }
+    generateProjectSources(project.projectDir.absolutePath + "/src/main/kotlin/generated")
   }
 }

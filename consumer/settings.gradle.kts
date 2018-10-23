@@ -1,7 +1,7 @@
-//pluginManagement {
-//  repositories {
-//    maven { url = uri("../plugin/build/repository") }
-//    mavenCentral()
-//    jcenter()
-//  }
-//}
+pluginManagement {
+  repositories {
+    maven { url = uri("../plugin/build/repository") }
+    mavenCentral()
+    jcenter()
+  }
+}
