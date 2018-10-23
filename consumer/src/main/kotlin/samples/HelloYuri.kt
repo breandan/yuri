@@ -27,7 +27,7 @@ fun main(a: Array<String>) {
   listOf(
       // Compiles!
       Y.uri(localhost),
-      Y.uri(localhost /bin),
+//      Y.uri(localhost /bin),
       Y.uri(localhost /bin/sh),
       Y.uri(localhost /bin/sh.distrib),
       Y.uri(localhost /bin/sh.distrib/sh),
