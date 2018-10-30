@@ -3,7 +3,8 @@ package co.ndan.yuri
 import com.squareup.kotlinpoet.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.Copy
+import org.gradle.api.Task
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
@@ -127,6 +128,21 @@ open class Yuri : Plugin<Project> {
   }
 
   override fun apply(project: Project) {
-    generateProjectSources(project.projectDir.absolutePath + "/src/main/kotlin/generated")
+    val path = if (project.hasProperty("ath"))
+      project.getProperties()["ath"].toString()
+    else
+      project.projectDir.absolutePath + "/src/main/kotlin/generated"
+
+    project.run {
+      tasks {
+        register("yuriTask", Task::class) {
+          generateProjectSources(path)
+        }
+
+//        withType<KotlinCompile> {
+//          dependsOn("yuriTask")
+//        }
+      }
+    }
   }
 }
