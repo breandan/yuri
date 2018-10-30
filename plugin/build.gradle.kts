@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
-
 plugins {
   idea apply true
   `kotlin-dsl`
@@ -11,18 +9,7 @@ plugins {
 group = "co.ndan"
 version = "0.1-SNAPSHOT"
 
-buildscript {
-  dependencies.classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.2.61")
-  repositories {
-    jcenter()
-    mavenCentral()
-  }
-}
-
-repositories {
-  jcenter()
-  mavenCentral()
-}
+repositories.jcenter()
 
 pluginBundle {
   website = "https://github.com/breandan/yuri"
@@ -37,7 +24,6 @@ pluginBundle {
 }
 
 dependencies {
-  compile(kotlin("stdlib-jdk8"))
   compile(kotlin("compiler-embeddable"))
   compile("com.squareup:kotlinpoet:1.0.0-RC1")
 }
