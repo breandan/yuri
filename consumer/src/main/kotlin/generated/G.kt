@@ -11,7 +11,7 @@ private const val unused: String = "UNUSED_PARAMETER"
 sealed class G(val uri: String = "/") {
     override fun toString() = "$uri/${javaClass.simpleName}"
 
-    object projectDir : G("/home/breandan/yuri/consumer/src/main/kotlin/generated") {
+    object projectDir : G("/home/breandan/IdeaProjects/yuri/consumer/src/main/kotlin/generated") {
         @JvmName("_dot_")
         operator fun div(@Suppress(unused) a: _dot_.Companion) = _dot_<projectDir>(uri)
 
@@ -29,9 +29,6 @@ sealed class G(val uri: String = "/") {
 
         @JvmName("gradlew")
         operator fun div(@Suppress(unused) a: gradlew.Companion) = gradlew<projectDir>(uri)
-
-        @JvmName("yuri_dot_iml")
-        operator fun div(@Suppress(unused) a: yuri_dot_iml.Companion) = yuri_dot_iml<projectDir>(uri)
 
         @JvmName("_dot_gradle")
         operator fun div(@Suppress(unused) a: _dot_gradle.Companion) = _dot_gradle<projectDir>(uri)
@@ -53,10 +50,6 @@ sealed class G(val uri: String = "/") {
     }
 
     class _dot_idea<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    class modules_dot_xml<T>(uri: String) : G(uri) {
         companion object
     }
 
@@ -93,10 +86,6 @@ sealed class G(val uri: String = "/") {
     }
 
     class gradlew<T>(uri: String) : G(uri) {
-        companion object
-    }
-
-    class yuri_dot_iml<T>(uri: String) : G(uri) {
         companion object
     }
 
@@ -198,136 +187,133 @@ sealed class G(val uri: String = "/") {
 }
 
 @JvmName("0")
-operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: modules_dot_xml.Companion) = modules_dot_xml<S>("$this")
-
-@JvmName("1")
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: workspace_dot_xml.Companion) = workspace_dot_xml<S>("$this")
 
-@JvmName("2")
+@JvmName("1")
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: encodings_dot_xml.Companion) = encodings_dot_xml<S>("$this")
 
-@JvmName("3")
+@JvmName("2")
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: vcs_dot_xml.Companion) = vcs_dot_xml<S>("$this")
 
-@JvmName("4")
+@JvmName("3")
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: misc_dot_xml.Companion) = misc_dot_xml<S>("$this")
 
-@JvmName("5")
+@JvmName("4")
 operator fun <S : _dot_idea<projectDir>> S.div(@Suppress(unused) a: gradle_dot_xml.Companion) = gradle_dot_xml<S>("$this")
 
-@JvmName("6")
+@JvmName("5")
 operator fun <S : _dot_gradle<projectDir>> S.div(@Suppress(unused) a: buildOutputCleanup.Companion) = buildOutputCleanup<S>("$this")
 
-@JvmName("7")
+@JvmName("6")
 operator fun <S : buildOutputCleanup<_dot_gradle<projectDir>>> S.div(@Suppress(unused) a: cache_dot_properties.Companion) = cache_dot_properties<S>("$this")
 
-@JvmName("8")
+@JvmName("7")
 operator fun <S : buildOutputCleanup<_dot_gradle<projectDir>>> S.div(@Suppress(unused) a: buildOutputCleanup_dot_lock.Companion) = buildOutputCleanup_dot_lock<S>("$this")
 
-@JvmName("9")
+@JvmName("8")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: build_dot_gradle_dot_kts.Companion) = build_dot_gradle_dot_kts<S>("$this")
 
-@JvmName("10")
+@JvmName("9")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: gradlew_dot_bat.Companion) = gradlew_dot_bat<S>("$this")
 
-@JvmName("11")
+@JvmName("10")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: gradlew.Companion) = gradlew<S>("$this")
 
-@JvmName("12")
+@JvmName("11")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: build.Companion) = build<S>("$this")
 
-@JvmName("13")
+@JvmName("12")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: libs.Companion) = libs<S>("$this")
 
-@JvmName("14")
+@JvmName("13")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: tmp.Companion) = tmp<S>("$this")
 
-@JvmName("15")
+@JvmName("14")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: classes.Companion) = classes<S>("$this")
 
-@JvmName("16")
+@JvmName("15")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: resources.Companion) = resources<S>("$this")
 
-@JvmName("17")
+@JvmName("16")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: kotlin.Companion) = kotlin<S>("$this")
 
-@JvmName("18")
+@JvmName("17")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: publications.Companion) = publications<S>("$this")
 
-@JvmName("19")
+@JvmName("18")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: pluginDescriptors.Companion) = pluginDescriptors<S>("$this")
 
-@JvmName("20")
+@JvmName("19")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: generated_dash_sources.Companion) = generated_dash_sources<S>("$this")
 
-@JvmName("21")
+@JvmName("20")
 operator fun <S : build<plugin<projectDir>>> S.div(@Suppress(unused) a: repository.Companion) = repository<S>("$this")
 
-@JvmName("22")
+@JvmName("21")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: _dot_gradle.Companion) = _dot_gradle<S>("$this")
 
-@JvmName("23")
+@JvmName("22")
 operator fun <S : _dot_gradle<plugin<projectDir>>> S.div(@Suppress(unused) a: buildOutputCleanup.Companion) = buildOutputCleanup<S>("$this")
 
-@JvmName("24")
+@JvmName("23")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: settings_dot_gradle_dot_kts.Companion) = settings_dot_gradle_dot_kts<S>("$this")
 
-@JvmName("25")
+@JvmName("24")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: src.Companion) = src<S>("$this")
 
-@JvmName("26")
+@JvmName("25")
 operator fun <S : src<plugin<projectDir>>> S.div(@Suppress(unused) a: main.Companion) = main<S>("$this")
 
-@JvmName("27")
+@JvmName("26")
 operator fun <S : plugin<projectDir>> S.div(@Suppress(unused) a: gradle.Companion) = gradle<S>("$this")
 
-@JvmName("28")
+@JvmName("27")
 operator fun <S : gradle<plugin<projectDir>>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
 
-@JvmName("29")
+@JvmName("28")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: build_dot_gradle_dot_kts.Companion) = build_dot_gradle_dot_kts<S>("$this")
 
-@JvmName("30")
+@JvmName("29")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: gradlew_dot_bat.Companion) = gradlew_dot_bat<S>("$this")
 
-@JvmName("31")
+@JvmName("30")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: gradlew.Companion) = gradlew<S>("$this")
 
-@JvmName("32")
+@JvmName("31")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: build.Companion) = build<S>("$this")
 
-@JvmName("33")
+@JvmName("32")
 operator fun <S : build<consumer<projectDir>>> S.div(@Suppress(unused) a: classes.Companion) = classes<S>("$this")
 
-@JvmName("34")
+@JvmName("33")
 operator fun <S : build<consumer<projectDir>>> S.div(@Suppress(unused) a: kotlin.Companion) = kotlin<S>("$this")
 
-@JvmName("35")
+@JvmName("34")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: _dot_gradle.Companion) = _dot_gradle<S>("$this")
 
-@JvmName("36")
+@JvmName("35")
 operator fun <S : _dot_gradle<consumer<projectDir>>> S.div(@Suppress(unused) a: buildOutputCleanup.Companion) = buildOutputCleanup<S>("$this")
 
-@JvmName("37")
+@JvmName("36")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: settings_dot_gradle_dot_kts.Companion) = settings_dot_gradle_dot_kts<S>("$this")
 
-@JvmName("38")
+@JvmName("37")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: src.Companion) = src<S>("$this")
 
-@JvmName("39")
+@JvmName("38")
 operator fun <S : src<consumer<projectDir>>> S.div(@Suppress(unused) a: main.Companion) = main<S>("$this")
 
-@JvmName("40")
+@JvmName("39")
 operator fun <S : consumer<projectDir>> S.div(@Suppress(unused) a: gradle.Companion) = gradle<S>("$this")
 
-@JvmName("41")
+@JvmName("40")
 operator fun <S : gradle<consumer<projectDir>>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
 
-@JvmName("42")
+@JvmName("41")
 operator fun <S : gradle<projectDir>> S.div(@Suppress(unused) a: wrapper.Companion) = wrapper<S>("$this")
 
-@JvmName("43")
+@JvmName("42")
 operator fun <S : wrapper<gradle<projectDir>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_jar.Companion) = gradle_dash_wrapper_dot_jar<S>("$this")
 
-@JvmName("44")
+@JvmName("43")
 operator fun <S : wrapper<gradle<projectDir>>> S.div(@Suppress(unused) a: gradle_dash_wrapper_dot_properties.Companion) = gradle_dash_wrapper_dot_properties<S>("$this")
