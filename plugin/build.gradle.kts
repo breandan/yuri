@@ -25,7 +25,7 @@ pluginBundle {
 
 dependencies {
   compile(kotlin("compiler-embeddable"))
-  compile("com.squareup:kotlinpoet:1.0.0-RC1")
+  compile("com.squareup:kotlinpoet:1.0.0-RC3")
 }
 
 gradlePlugin.plugins.register("yuriPlugin") {
