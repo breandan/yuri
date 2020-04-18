@@ -1,6 +1,7 @@
 package samples
 
 import samples.Y.*
+import generated.G
 import generated.G.*
 
 fun main(a: Array<String>) {
@@ -38,14 +39,15 @@ fun main(a: Array<String>) {
       Y.uri(localhost /usr/bin/vim),
       Y.uri(localhost /usr/local),
       Y.uri(localhost /usr/local/bin),
-      Y.uri(localhost /usr/local/bin/sh)
+      Y.uri(localhost /usr/local/bin/sh),
 
-//      Y.uri(projectDir),
-//      Y.uri(projectDir /gradle),
-//      Y.uri(projectDir /gradlew),
-//      Y.uri(projectDir /settings_dot_gradle),
-//      Y.uri(projectDir /src/main),
-//      Y.uri(projectDir /src/main/kotlin)
+      G.uri(projectDir /src)
+//      G.uri(projectDir /src/main)
+//      G.uri(projectDir /gradle),
+//      G.uri(projectDir /gradlew),
+//      G.uri(projectDir /settings_dot_gradle),
+//      G.uri(projectDir /src/main),
+//      G.uri(projectDir /src/main/kotlin)
 
       // Does not compile!
       // ,Y.uri(localhost /local)

@@ -12,13 +12,9 @@ import java.io.File
 open class Yuri : Plugin<Project> {
   fun generateProjectSources(path: String) {
     val walker = File(".").walkTopDown()
-    val allFiles = walker
-      .maxDepth(3)
-      .filter { !it.path.contains(".git") }
+    val allFiles = walker.filter(canIgnore())
       .filter { file -> !file.path.toCharArray().any { it.isDigit() } }
-    val topLevelFiles = walker
-      .maxDepth(1)
-      .filter { !it.path.contains(".git") }
+    val topLevelFiles = walker.maxDepth(1).filter(canIgnore())
     val topLevelFileNames = topLevelFiles
       .map { it.name.replace(".", "_dot_").replace("$", "_dollar_") }
     val allFileNames = allFiles
@@ -123,14 +119,20 @@ open class Yuri : Plugin<Project> {
       .toString()
 
     File(path).mkdirs()
-    return File("$path/G.kt").writeText("$header$Gkt")
+    return File("$path/src/main/kotlin/generated/G.kt").writeText("$header$Gkt")
+  }
+
+  private fun canIgnore() = { it: File ->
+    !(it.endsWith(".") ||
+      "git" in it.path ||
+      "gradle" in it.path ||
+      "build" in it.path)
   }
 
   override fun apply(project: Project) {
     val path = if (project.hasProperty("ath"))
       project.getProperties()["ath"].toString()
-    else
-      project.projectDir.absolutePath + "/src/main/kotlin/generated"
+    else project.projectDir.absolutePath
 
     project.run {
       tasks.register("yuriTask", Task::class) {

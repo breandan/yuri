@@ -1,3 +1,8 @@
+plugins {
+  idea
+  kotlin("jvm") version "1.3.72"
+}
+
 tasks {
   val plugin by registering(GradleBuild::class) {
     dir = file("plugin")
@@ -5,8 +10,11 @@ tasks {
   }
 
   val consumer by registering(GradleBuild::class) {
-    dependsOn(plugin)
     dir = file("consumer")
     tasks = listOf("run")
+  }
+
+  consumer {
+    dependsOn(plugin)
   }
 }

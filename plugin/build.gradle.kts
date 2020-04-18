@@ -1,9 +1,8 @@
 plugins {
   idea apply true
   `kotlin-dsl`
-  id("com.gradle.plugin-publish") version "0.10.0"
-  `java-gradle-plugin`
   `maven-publish`
+  id("com.gradle.plugin-publish") version "0.11.0"
 }
 
 group = "co.ndan"
@@ -25,7 +24,7 @@ pluginBundle {
 
 dependencies {
   compile(kotlin("compiler-embeddable"))
-  compile("com.squareup:kotlinpoet:1.0.0")
+  compile("com.squareup:kotlinpoet:1.5.0")
 }
 
 gradlePlugin.plugins.register("yuriPlugin") {

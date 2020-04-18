@@ -1,4 +1,4 @@
-# yuri
+# Yuri
 
 A type-safe URI builder for Kotlin. Work in progress.
 
@@ -124,7 +124,7 @@ To reproduce the example code above, run the following command from the project 
 
 ## generate
 
-To [re]generate the file tree, run the following command from the project directory:
+To generate the file tree, run the following command from the project directory:
 
 ```
 ./gradlew genSources [-Path=<absolute path to perform file tree scan>]
@@ -136,7 +136,7 @@ Unless `-Path` is specified, Yuri will scan the project directory. Code generati
 
 See:
 
-* [Y.kt](src/main/kotlin/Y.kt), for DSL and type checking
+* [Y.kt](consumer/src/main/kotlin/samples/Y.kt), for DSL and type checking
 * [build.gradle.kts](build.gradle.kts), for code generation
 
 ## why?
