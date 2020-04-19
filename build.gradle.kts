@@ -4,17 +4,14 @@ plugins {
 }
 
 tasks {
-  val plugin by registering(GradleBuild::class) {
+  val plugin by creating(GradleBuild::class) {
     dir = file("plugin")
     tasks = listOf("publish")
   }
 
-  val consumer by registering(GradleBuild::class) {
+  val consumer by creating(GradleBuild::class) {
+    dependsOn(plugin)
     dir = file("consumer")
     tasks = listOf("run")
-  }
-
-  consumer {
-    dependsOn(plugin)
   }
 }

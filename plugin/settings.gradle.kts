@@ -1,3 +1,0 @@
-pluginManagement.repositories {
-  gradlePluginPortal()
-}

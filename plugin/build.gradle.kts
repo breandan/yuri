@@ -14,7 +14,7 @@ pluginBundle {
   website = "https://github.com/breandan/yuri"
   vcsUrl = "https://github.com/breandan/yuri"
   description = "A type-safe URI builder for Kotlin."
-  tags = listOf("yuri", "uri", "type-safe", "codegen", "kotlin")
+  tags = listOf("uri", "types", "codegen", "kotlin")
 
   mavenCoordinates {
     groupId = project.group.toString()
