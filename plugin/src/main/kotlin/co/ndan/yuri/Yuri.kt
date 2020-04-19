@@ -131,7 +131,7 @@ open class Yuri : Plugin<Project> {
     else project.projectDir.absolutePath
 
     project.run {
-      tasks.register("yuriTask", Task::class) {
+      tasks.register("genSources", Task::class) {
         generateProjectSources(path)
       }
     }
