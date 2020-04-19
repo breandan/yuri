@@ -1,8 +1,8 @@
 package samples
 
 import samples.Y.*
-import generated.G
-import generated.G.*
+//import generated.G
+//import generated.G.*
 
 fun main(a: Array<String>) {
   println(""" MOCK FILE TREE:
@@ -39,9 +39,9 @@ fun main(a: Array<String>) {
       Y.uri(localhost /usr/bin/vim),
       Y.uri(localhost /usr/local),
       Y.uri(localhost /usr/local/bin),
-      Y.uri(localhost /usr/local/bin/sh),
+      Y.uri(localhost /usr/local/bin/sh)
 
-      G.uri(projectDir /src)
+//      G.uri(projectDir /src)
 //      G.uri(projectDir /src/main)
 //      G.uri(projectDir /gradle),
 //      G.uri(projectDir /gradlew),

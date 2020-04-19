@@ -124,10 +124,10 @@ To reproduce the example code above, run the following command from the project 
 
 ## generate
 
-To generate the file tree, run the following command from the project directory:
+To generate the file tree, run the following command from the `consumer` directory:
 
 ```
-./gradlew genSources [-Path=<absolute path to perform file tree scan>]
+../gradlew genSources [-Path=<absolute path to perform file tree scan>]
 ```
 
 Unless `-Path` is specified, Yuri will scan the project directory. Code generation is provided by [Kotlin Poet](https://github.com/square/kotlinpoet).

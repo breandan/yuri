@@ -1,5 +1,5 @@
 plugins {
-  idea apply true
+  idea
   `kotlin-dsl`
   `maven-publish`
   id("com.gradle.plugin-publish") version "0.11.0"
@@ -23,8 +23,8 @@ pluginBundle {
 }
 
 dependencies {
-  compile(kotlin("compiler-embeddable"))
-  compile("com.squareup:kotlinpoet:1.5.0")
+  implementation(kotlin("compiler-embeddable"))
+  implementation("com.squareup:kotlinpoet:1.5.0")
 }
 
 gradlePlugin.plugins.register("yuriPlugin") {

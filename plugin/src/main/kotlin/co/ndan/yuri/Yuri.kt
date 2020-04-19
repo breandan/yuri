@@ -4,35 +4,29 @@ import com.squareup.kotlinpoet.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
-import org.gradle.kotlin.dsl.invoke
 import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
 import java.io.File
 
 open class Yuri : Plugin<Project> {
+  val specialMap = listOf("." to "_dot_", "-" to "_dash_", "$" to "_dollar_")
+  fun String.escaped() =
+    specialMap.fold(this) { acc, pair -> acc.replace(pair.first, pair.second) }
+
   fun generateProjectSources(path: String) {
-    val walker = File(".").walkTopDown()
+    val walker = File(path).walkTopDown()
     val allFiles = walker.filter(canIgnore())
-      .filter { file -> !file.path.toCharArray().any { it.isDigit() } }
     val topLevelFiles = walker.maxDepth(1).filter(canIgnore())
-    val topLevelFileNames = topLevelFiles
-      .map { it.name.replace(".", "_dot_").replace("$", "_dollar_") }
+    val topLevelFileNames = topLevelFiles.map { it.name.escaped() }
     val allFileNames = allFiles
-      .map {
-        it.name.replace(".", "_dot_")
-          .replace("-", "_dash_")
-          .replace("$", "_dollar_")
-      }
+      .map { it.name.escaped() }
       .map { if (it in (KEYWORDS + "out")) "`$it`" else it }
       .toSet()
 
     val dirMap = allFiles.filter { it !in topLevelFiles }
       .map { file ->
-        val elements = file.path
-          .replace("-", "_dash_")
-          .substring(2)
-          .replace(".", "_dot_")
-          .replace("$", "_dollar_")
+        val elements = file.relativeTo(File(path)).path
+          .escaped()
           .split("/")
           .map { if (it in (KEYWORDS + "out")) "`$it`" else it }
           .asReversed()
@@ -125,8 +119,10 @@ open class Yuri : Plugin<Project> {
   private fun canIgnore() = { it: File ->
     !(it.endsWith(".") ||
       "git" in it.path ||
+      "idea" in it.path ||
       "gradle" in it.path ||
-      "build" in it.path)
+      "build" in it.path ||
+      it.path.any(Char::isDigit))
   }
 
   override fun apply(project: Project) {

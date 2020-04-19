@@ -14,10 +14,19 @@ sealed class G(
   override fun toString() = "$uri/${javaClass.simpleName}"
 
   object projectDir : G("/home/breandan/IdeaProjects/yuri/consumer") {
+    @JvmName("consumer")
+    operator fun div(@Suppress(unused) a: consumer.Companion) = consumer<projectDir>(uri)
+
     @JvmName("src")
     operator fun div(@Suppress(unused) a: src.Companion) = src<projectDir>(uri)
 
     override fun toString() = uri
+  }
+
+  class consumer<T>(
+    uri: String
+  ) : G(uri) {
+    companion object
   }
 
   class src<T>(
