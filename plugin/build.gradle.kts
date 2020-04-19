@@ -2,14 +2,10 @@ plugins {
   idea
   `kotlin-dsl`
   `maven-publish`
-  kotlin("jvm") version "1.3.72"
+  kotlin("jvm")
   id("com.gradle.plugin-publish") version "0.11.0"
 }
 
-group = "co.ndan"
-version = "0.1-SNAPSHOT"
-
-repositories.jcenter()
 
 pluginBundle {
   website = "https://github.com/breandan/yuri"

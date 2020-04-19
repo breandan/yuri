@@ -1,3 +1,14 @@
+plugins {
+  kotlin("jvm") version "1.3.72"
+}
+
+allprojects {
+  group = "co.ndan"
+  version = "0.1-SNAPSHOT"
+
+  repositories.jcenter()
+}
+
 tasks {
   val plugin by creating(GradleBuild::class) {
     dir = file("plugin")
