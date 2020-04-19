@@ -1,8 +1,3 @@
-plugins {
-  idea
-  kotlin("jvm") version "1.3.72"
-}
-
 tasks {
   val plugin by creating(GradleBuild::class) {
     dir = file("plugin")
