@@ -1,6 +1,6 @@
 plugins {
   idea
-  kotlin("jvm") version "1.3.41"
+  kotlin("jvm") version "1.3.72"
 }
 
 tasks {
