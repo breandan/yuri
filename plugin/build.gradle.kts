@@ -3,7 +3,7 @@ plugins {
   `kotlin-dsl`
   `maven-publish`
   kotlin("jvm")
-  id("com.gradle.plugin-publish") version "0.11.0"
+  id("com.gradle.plugin-publish") version "0.12.0"
 }
 
 
@@ -21,7 +21,7 @@ pluginBundle {
 
 dependencies {
   implementation(kotlin("compiler-embeddable"))
-  implementation("com.squareup:kotlinpoet:1.5.0")
+  implementation("com.squareup:kotlinpoet:1.6.0")
 }
 
 gradlePlugin.plugins.register("yuriPlugin") {

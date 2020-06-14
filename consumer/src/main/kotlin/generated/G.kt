@@ -71,12 +71,6 @@ sealed class G(
     companion object
   }
 
-  class G_dot_kt<T>(
-    uri: String
-  ) : G(uri) {
-    companion object
-  }
-
   companion object {
     fun uri(file: G) = File("$file")
   }
@@ -104,7 +98,3 @@ operator fun <S : samples<kotlin<main<src<projectDir>>>>> S.div(@Suppress(unused
 @JvmName("5")
 operator fun <S : kotlin<main<src<projectDir>>>> S.div(@Suppress(unused) a: generated.Companion) =
     generated<S>("$this")
-
-@JvmName("6")
-operator fun <S : generated<kotlin<main<src<projectDir>>>>> S.div(@Suppress(unused)
-    a: G_dot_kt.Companion) = G_dot_kt<S>("$this")

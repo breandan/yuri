@@ -137,7 +137,7 @@ Unless `-Path` is specified, Yuri will scan the project directory. Code generati
 See:
 
 * [Y.kt](consumer/src/main/kotlin/samples/Y.kt), for DSL and type checking
-* [build.gradle.kts](build.gradle.kts), for code generation
+* [Yuri.kt](plugin/src/main/kotlin/co/ndan/yuri/Yuri.kt), for code generation
 
 ## why?
 
