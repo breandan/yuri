@@ -1,1 +1,2 @@
-include("plugin")
+include(":consumer")
+includeBuild("plugin")

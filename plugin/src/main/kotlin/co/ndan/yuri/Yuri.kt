@@ -4,7 +4,6 @@ import com.squareup.kotlinpoet.*
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.Task
-import org.gradle.kotlin.dsl.register
 import org.jetbrains.kotlin.renderer.KeywordStringsGenerated.KEYWORDS
 import java.io.File
 
@@ -127,11 +126,11 @@ open class Yuri : Plugin<Project> {
 
   override fun apply(project: Project) {
     val path = if (project.hasProperty("ath"))
-      project.getProperties()["ath"].toString()
+      project.properties["ath"].toString()
     else project.projectDir.absolutePath
 
     project.run {
-      tasks.register("genSources", Task::class) {
+      tasks.register("genSources") {
         generateProjectSources(path)
       }
     }

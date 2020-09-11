@@ -1,14 +1,15 @@
 plugins {
-  idea
-  kotlin("jvm") version "1.4.0"
   application
-  id("yuri-plugin") version "0.1-SNAPSHOT"
+  kotlin("jvm") version "1.4.10"
+  id("yuri-plugin")
 }
 
-application.mainClassName = "samples.HelloYuriKt"
+repositories {
+  mavenCentral()
+}
 
 dependencies {
   implementation(kotlin("stdlib"))
 }
 
-repositories.jcenter()
+application.mainClassName = "samples.HelloYuriKt"

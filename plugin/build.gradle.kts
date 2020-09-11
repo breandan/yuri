@@ -1,11 +1,10 @@
 plugins {
-  idea
-  `kotlin-dsl`
-  `maven-publish`
-  kotlin("jvm")
+  `java-gradle-plugin`
+  kotlin("jvm") version "1.4.10"
   id("com.gradle.plugin-publish") version "0.12.0"
 }
 
+repositories.jcenter()
 
 pluginBundle {
   website = "https://github.com/breandan/yuri"
@@ -28,5 +27,3 @@ gradlePlugin.plugins.register("yuriPlugin") {
   id = "yuri-plugin"
   implementationClass = "co.ndan.yuri.Yuri"
 }
-
-publishing.repositories.maven(url = "build/repository")

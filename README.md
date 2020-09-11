@@ -119,7 +119,7 @@ Y.uris(*sh) { it.setReadOnly() }
 To reproduce the example code above, run the following command from the project directory:
 
 ```
-./gradlew consumer
+./gradlew run
 ```
 
 ## generate
