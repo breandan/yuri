@@ -1,6 +1,6 @@
 plugins {
   application
-  kotlin("jvm") version "1.4.20"
+  kotlin("jvm") version "1.4.30"
   id("yuri-plugin")
 }
 
@@ -12,4 +12,4 @@ dependencies {
   implementation(kotlin("stdlib"))
 }
 
-application.mainClassName = "samples.HelloYuriKt"
+application.mainClass.set("samples.HelloYuriKt")
