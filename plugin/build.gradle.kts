@@ -4,7 +4,7 @@ plugins {
   id("com.gradle.plugin-publish") version "0.12.0"
 }
 
-repositories.jcenter()
+repositories.mavenCentral()
 
 pluginBundle {
   website = "https://github.com/breandan/yuri"

@@ -4,9 +4,7 @@ plugins {
   id("yuri-plugin")
 }
 
-repositories {
-  mavenCentral()
-}
+repositories.mavenCentral()
 
 dependencies {
   implementation(kotlin("stdlib"))
