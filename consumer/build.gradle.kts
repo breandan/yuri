@@ -1,6 +1,6 @@
 plugins {
   application
-  kotlin("jvm") version "1.5.0-M1"
+  kotlin("jvm") version "1.7.10"
   id("yuri-plugin")
 }
 
